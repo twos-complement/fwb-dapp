@@ -3,6 +3,7 @@ import { ThemeProvider } from 'styled-components'
 
 import theme from '../util/theme'
 import GlobalStyles from '../components/ui/core/GlobalStyles'
+import { Web3Provider } from '../components/contexts/Web3Context'
 import { ModalProvider } from '../components/contexts/ModalContext'
 import Modal from '../components/ui/core/Modal'
 import Header from '../components/ui/core/Header'
@@ -21,12 +22,14 @@ function MyApp({ Component, pageProps }) {
         />
       </Head>
       <ThemeProvider theme={theme}>
-        <ModalProvider>
-          <GlobalStyles />
-          <Header />
-          <Component {...pageProps} />
-          <Modal />
-        </ModalProvider>
+        <Web3Provider>
+          <ModalProvider>
+            <GlobalStyles />
+            <Header />
+            <Component {...pageProps} />
+            <Modal />
+          </ModalProvider>
+        </Web3Provider>
       </ThemeProvider>
     </>
   )

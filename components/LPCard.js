@@ -2,9 +2,9 @@ import Card from './ui/core/Card'
 import ValuesSection from './ui/uniswap-v3/ValuesSection'
 import StakeButtons from './ui/uniswap-v3/StakeButtons'
 import StakeModal from './ui/uniswap-v3/StakeModal'
-import ClaimRewardsModal from './ui/uniswap-v3/ClaimRewardsModal'
 
 import useModal from './hooks/useModal'
+import useFWBProLPTokens from './hooks/useFWBProLPTokens'
 
 const LPCard = () => {
   // TODO: Fetch data:
@@ -25,6 +25,8 @@ const LPCard = () => {
   ]
 
   const { showModal } = useModal()
+  const { tokens } = useFWBProLPTokens()
+  console.log(tokens)
 
   return (
     <Card>
