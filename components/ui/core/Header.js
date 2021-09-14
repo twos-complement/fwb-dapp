@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import useModal from '../../hooks/useModal'
 import { Button } from './Buttons'
 import WalletModal from './WalletModal'
+import DirectionalFadeIn from './DirectionalFadeIn'
 
 const Layout = styled.div`
   width: 100%;
@@ -16,12 +17,16 @@ const Header = () => {
   return (
     <Layout>
       <div>
-        <h1>FWB</h1>
+        <DirectionalFadeIn direction="down">
+          <h1>FWB</h1>
+        </DirectionalFadeIn>
       </div>
       <div>
-        <Button onClick={() => showModal(<WalletModal />)}>
-          Connect Wallet
-        </Button>
+        <DirectionalFadeIn direction="left" delay={600} duration={1000}>
+          <Button onClick={() => showModal(<WalletModal />)}>
+            Connect Wallet
+          </Button>
+        </DirectionalFadeIn>
       </div>
     </Layout>
   )

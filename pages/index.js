@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import TotalCapitalCard from '../components/TotalCapitalCard'
 import TokenPriceCard from '../components/TokenPriceCard'
 import LPCard from '../components/LPCard'
+import DirectionalFadeIn from '../components/ui/core/DirectionalFadeIn'
 
 const Layout = styled.div`
   display: grid;
@@ -39,17 +40,23 @@ const Home = () => {
       </Head>
       <main>
         <Layout>
-          <HeaderLayout>
-            <h1>Liquidity Mining</h1>
-            <h4>
-              Earn rewards for supplying liquidity for FWB Pro on Uniswap V3
-            </h4>
-          </HeaderLayout>
-          <TokenPriceLayout>
-            <TotalCapitalCard />
-            <TokenPriceCard />
-          </TokenPriceLayout>
-          <LPCard />
+          <DirectionalFadeIn direction="up">
+            <HeaderLayout>
+              <h1>Liquidity Mining</h1>
+              <h4>
+                Earn rewards for supplying liquidity for FWB Pro on Uniswap V3
+              </h4>
+            </HeaderLayout>
+          </DirectionalFadeIn>
+          <DirectionalFadeIn direction="right" delay={200}>
+            <TokenPriceLayout>
+              <TotalCapitalCard />
+              <TokenPriceCard />
+            </TokenPriceLayout>
+          </DirectionalFadeIn>
+          <DirectionalFadeIn direction="right" delay={400}>
+            <LPCard />
+          </DirectionalFadeIn>
         </Layout>
       </main>
     </div>

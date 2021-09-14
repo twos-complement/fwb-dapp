@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components'
 
 import useModal from '../../hooks/useModal'
+import DirectionalFadeIn from './DirectionalFadeIn'
 
 const Backdrop = styled.div`
   position: absolute;
@@ -29,7 +30,9 @@ const Modal = () => {
   const { content, hideModal, visible } = useModal()
   return (
     <Backdrop onClick={hideModal} visible={visible}>
-      <Layout onClick={e => e.stopPropagation()}>{content}</Layout>
+      <DirectionalFadeIn direction="up" duration={500}>
+        <Layout onClick={e => e.stopPropagation()}>{content}</Layout>
+      </DirectionalFadeIn>
     </Backdrop>
   )
 }
