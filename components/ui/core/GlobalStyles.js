@@ -22,9 +22,36 @@ const GlobalStyles = createGlobalStyle`
     color: ${props => props.theme.colors.neutral800};
     font-size: 62.5%; /* base 10 rems */
   }
+  @font-face {
+    font-family: "TWK Everett";
+    src: url("/fonts/TWKEverett-MediumItalic-web.ttf");
+    font-style: italic, oblique;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "TWK Everett";
+    src: url("/fonts/TWKEverett-BoldItalic-web.ttf");
+    font-style: italic, oblique;
+    font-weight: bold;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "TWK Everett";
+    src: url("/fonts/TWKEverett-Medium-web.ttf");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "TWK Everett";
+    src: url("/fonts/TWKEverett-Bold-web.ttf");
+    font-weight: 700;
+    font-style: bold;
+    font-display: swap;
+  }
   * {
     box-sizing: border-box;
-    font-family: 'Work Sans', sans-serif;
+    font-family: "TWK Everett", 'Work Sans', sans-serif;
     font-weight: 500;
   }
   h1 { ${H1Styles} }

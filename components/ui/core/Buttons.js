@@ -2,10 +2,11 @@ import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
 
 const BaseTextStyles = css`
-  font-family: Work Sans;
-  font-weight: 500;
-  font-size: 1.4rem;
-  line-height: 2rem;
+  font-family: TWK Everett;
+  font-size: 1rem;
+  line-height: 1.25rem;
+  text-transform: uppercase;
+  font-feature-settings: 'zero' on, 'ss02' on;
 `
 
 export const TextButton = styled.div`

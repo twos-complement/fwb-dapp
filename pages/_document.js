@@ -43,6 +43,30 @@ export default class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap"
             rel="stylesheet"
           ></link>
+          <link
+            rel="preload"
+            href="/fonts/TWKEverett-Medium-web.ttf"
+            as="font"
+            crossOrigin=""
+          ></link>
+          <link
+            rel="preload"
+            href="/fonts/TWKEverett-Bold-web.ttf"
+            as="font"
+            crossOrigin=""
+          ></link>
+          <link
+            rel="preload"
+            href="/fonts/TWKEverett-BoldItalic-web.ttf"
+            as="font"
+            crossOrigin=""
+          ></link>
+          <link
+            rel="preload"
+            href="/fonts/TWKEverett-MediumItalic-web.ttf"
+            as="font"
+            crossOrigin=""
+          ></link>
         </Head>
         <body>
           <Main />
