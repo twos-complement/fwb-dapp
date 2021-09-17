@@ -5,6 +5,7 @@ import TotalCapitalCard from '../components/TotalCapitalCard'
 import TokenPriceCard from '../components/TokenPriceCard'
 import LPCard from '../components/LPCard'
 import DirectionalFadeIn from '../components/ui/core/DirectionalFadeIn'
+import { H1Alt } from '../components/ui/core/Typography'
 
 const Layout = styled.div`
   display: grid;
@@ -46,6 +47,7 @@ const Home = () => {
               <h4>
                 Earn rewards for supplying liquidity for FWB Pro on Uniswap V3
               </h4>
+              <H1Alt>Header Alt</H1Alt>
             </HeaderLayout>
           </DirectionalFadeIn>
           <DirectionalFadeIn direction="right" delay={200}>
