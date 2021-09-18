@@ -1,3 +1,10 @@
+// FWB Pro:
+export const RewardToken = '0x35bD01FC9d6D5D81CA9E055Db88Dc49aa2c699A8'
+// FWB Pro:
+export const IncentiveToken0 = '0x35bD01FC9d6D5D81CA9E055Db88Dc49aa2c699A8'
+// WETH:
+export const IncentiveToken1 = '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2'
+
 export const Incentive = {
   //TODO: Replace DPI with FWB params:
   /* FWB-ETH
@@ -9,17 +16,12 @@ export const Incentive = {
   */
 
   /* Testing with DPI: */
-  rewardToken: '0x0954906da0Bf32d5479e25f46056d22f08464cab',
+  rewardToken: RewardToken,
   pool: '0x9359c87B38DD25192c5f2b07b351ac91C90E6ca7',
   startTime: 1629493200,
   endTime: 1630789200,
   refundee: '0x9467cfADC9DE245010dF95Ec6a585A506A8ad5FC',
 }
-
-// FWB Pro:
-export const IncentiveToken0 = '0x35bD01FC9d6D5D81CA9E055Db88Dc49aa2c699A8'
-// WETH:
-export const IncentiveToken1 = '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2'
 
 export const IncentiveStruct = {
   IncentiveKey: {

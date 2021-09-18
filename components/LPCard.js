@@ -5,6 +5,7 @@ import StakeModal from './ui/uniswap-v3/StakeModal'
 
 import useModal from './hooks/useModal'
 import useFWBProLPTokens from './hooks/useFWBProLPTokens'
+import useRewards from './hooks/useRewards'
 
 const LPCard = () => {
   // TODO: Fetch data:
@@ -14,6 +15,7 @@ const LPCard = () => {
 
   const { showModal } = useModal()
   const { tokens } = useFWBProLPTokens()
+  const { rewards } = useRewards()
 
   return (
     <Card>
@@ -21,7 +23,7 @@ const LPCard = () => {
       <ValuesSection
         stakedNFTs={stakedNFTs}
         pendingRewards={pendingRewards}
-        accruedRewards={accruedRewards}
+        accruedRewards={rewards.toString()}
       />
       <StakeButtons
         handleStakeClick={() => {
