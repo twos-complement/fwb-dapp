@@ -21,7 +21,7 @@ const Layout = styled.div`
     border-right: 1px solid ${props => props.theme.colors.neutral700};
     padding: 10px 48px 10px 0;
   }
-`;
+`
 
 const Hero = styled.div`
   display: flex;
@@ -43,7 +43,6 @@ const Hero = styled.div`
   }
 `
 
-
 const TokenPriceLayout = styled(Hero)`
   > *:first-child {
     position: absolute;
@@ -60,13 +59,13 @@ const TokenPriceLayout = styled(Hero)`
 const CardsWrapper = styled.div`
   display: grid;
   grid-gap: 10px;
-`;
+`
 
 const PricesWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-column-gap: 20px;
-`;
+`
 
 const Home = () => {
   return (
@@ -77,7 +76,7 @@ const Home = () => {
       </Head>
       <main>
         <Layout>
-          <DirectionalFadeIn direction="up">
+          <DirectionalFadeIn direction="up" threshold={0}>
             <Hero>
               <FWB />
               <div>
