@@ -3,27 +3,40 @@ import { useState, useEffect } from 'react'
 import useWeb3 from './useWeb3'
 import useUniswapV3Positions from './useUniswapV3Positions'
 
-// TODO: set incentive id:
-const INCENTIVE_ID = ''
+import {
+  IncentiveStruct,
+  Incentive,
+  IncentiveToken0,
+  IncentiveToken1,
+} from '../../util/contants'
 
 const useFWBProLPTokens = () => {
   const [tokens, setTokens] = useState([])
   const { positions } = useUniswapV3Positions()
-  const { contracts, accounts } = useWeb3()
+  const { contracts, accounts, web3 } = useWeb3()
 
   async function loadStakes() {
     let newTokens = []
 
-    for (var i = 0; i < positions.length; i++) {
+    // Encode incentive id:
+    const incentiveId = web3.eth.abi.encodeParameter(IncentiveStruct, Incentive)
+    const encodedIncentiveId = web3.utils.keccak256(incentiveId)
+
+    // Filter only FWB-ETH positions:
+    const FWBPositions = positions.filter(
+      ({ token0, token1 }) =>
+        token0 == IncentiveToken0 && token1 == IncentiveToken1,
+    )
+
+    // Iterate through positions, and check stakes status:
+    for (var i = 0; i < FWBPositions.length; i++) {
       try {
         const stakes = await contracts.UniswapV3Staker.methods
-          .stakes(positions[i].id, INCENTIVE_ID)
+          .stakes(FWBPositions[i].id, encodedIncentiveId)
           .call()
-        console.log(stakes)
-        // TODO: set stake status based on stake info:
-        const isStaked = false
+        const isStaked = stakes.secondsPerLiquidityInsideInitialX128 != '0'
         newTokens.push({
-          ...positions,
+          ...FWBPositions[i],
           isStaked,
         })
       } catch (e) {}

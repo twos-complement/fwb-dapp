@@ -13,11 +13,12 @@ const Layout = styled.div`
   grid-row-gap: 16px;
 `
 
-const StakeModal = ({ NFTs }) => {
+const StakeModal = ({ tokens }) => {
   const { hideModal, showModal } = useModal()
 
-  const stakedNFTs = NFTs.filter(nft => nft.isStaked)
-  const unstakedNFTs = NFTs.filter(nft => !nft.isStaked)
+  console.log(tokens)
+  const stakedTokens = tokens.filter(token => token.isStaked)
+  const unstakedTokens = tokens.filter(token => !token.isStaked)
 
   return (
     <Layout>
@@ -29,25 +30,26 @@ const StakeModal = ({ NFTs }) => {
       <div>
         <h5>Unstaked</h5>
         <NFTList>
-          {unstakedNFTs.map(({ id }) => (
+          {unstakedTokens.map(token => (
             <NFTListItem
-              key={id}
-              id={id}
-              handleClick={() => showModal(<UnstakedNFTModal id={id} />)}
-            >
-              <p>{id}</p>
-            </NFTListItem>
+              key={token.id}
+              id={token.id}
+              minTick={token.tickLower}
+              maxTick={token.tickUpper}
+              handleClick={() => showModal(<UnstakedNFTModal id={token.id} />)}
+            />
           ))}
         </NFTList>
       </div>
       <div>
         <h5>Staked</h5>
         <NFTList>
-          {stakedNFTs.map(({ id, pendingRewards }) => (
+          {stakedTokens.map(token => (
             <NFTListItem
-              key={id}
-              id={id}
-              pendingRewards={pendingRewards}
+              key={token.id}
+              id={token.id}
+              minTick={token.tickLower}
+              maxTick={token.tickUpper}
               handleClick={() => showModal(<StakedNFTModal id={id} />)}
             >
               <p>{id}</p>
@@ -61,12 +63,7 @@ const StakeModal = ({ NFTs }) => {
 }
 
 StakeModal.propTypes = {
-  NFTs: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      isStaked: PropTypes.bool.isRequired,
-    }),
-  ).isRequired,
+  tokens: PropTypes.arrayOf(PropTypes.object).isRequired,
 }
 
 export default StakeModal

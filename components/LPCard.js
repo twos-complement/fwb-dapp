@@ -11,22 +11,9 @@ const LPCard = () => {
   const stakedNFTs = '0'
   const pendingRewards = '0.00000'
   const accruedRewards = '2.00000'
-  const NFTs = [
-    {
-      id: 123456,
-      isStaked: false,
-      pendingRewards: '0 FWB Pro',
-    },
-    {
-      id: 987654,
-      isStaked: true,
-      pendingRewards: '2.00000 FWB Pro',
-    },
-  ]
 
   const { showModal } = useModal()
   const { tokens } = useFWBProLPTokens()
-  console.log(tokens)
 
   return (
     <Card>
@@ -38,7 +25,7 @@ const LPCard = () => {
       />
       <StakeButtons
         handleStakeClick={() => {
-          showModal(<StakeModal NFTs={NFTs} />)
+          showModal(<StakeModal tokens={tokens} />)
         }}
         handleClaimClick={() => {
           console.log('Claiming rewards...')

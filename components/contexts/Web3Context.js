@@ -21,6 +21,7 @@ export const Web3Provider = ({ children }) => {
   const [web3Modal, setWeb3Modal] = useState()
   const [accounts, setAccounts] = useState([])
   const [contracts, setContracts] = useState({})
+  const [web3, setWeb3] = useState()
 
   useEffect(() => {
     const web3Modal = new Web3Modal({
@@ -34,6 +35,9 @@ export const Web3Provider = ({ children }) => {
     const provider = await web3Modal.connect()
     const web3 = new Web3(provider)
     const accounts = await web3.eth.getAccounts()
+
+    // Set provider:
+    setWeb3(web3)
 
     // Set accounts:
     setAccounts(accounts)
@@ -55,7 +59,7 @@ export const Web3Provider = ({ children }) => {
   }
 
   return (
-    <Web3Context.Provider value={{ connect, accounts, contracts }}>
+    <Web3Context.Provider value={{ connect, accounts, contracts, web3 }}>
       {children}
     </Web3Context.Provider>
   )
