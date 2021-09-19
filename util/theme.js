@@ -1,14 +1,7 @@
-const theme = {
-  bp: {
-    sm: style =>
-      `@media only screen and (min-width: 480px) and (max-width: 767px) { ${style} }`,
-    md: style =>
-      `@media only screen and (min-width: 768px) and (max-width: 1279px) { ${style} }`,
-    lg: style =>
-      `@media only screen and (min-width: 1280px) and (max-width: 1560px) { ${style} }`,
-    xl: style => `@media only screen and (min-width: 1560px) { ${style} }`,
-  },
+import bp from './breakpoints';
 
+const theme = {
+  bp,
   colors: {
     primary900: '#530028',
     primary800: '#810036',

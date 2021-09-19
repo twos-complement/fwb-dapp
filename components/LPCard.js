@@ -7,6 +7,14 @@ import useModal from './hooks/useModal'
 import useLPTokens from './hooks/useLPTokens'
 import useAccruedRewards from './hooks/useAccruedRewards'
 import useWeb3 from './hooks/useWeb3'
+import { FWBTag } from './ui/core/Tags'
+import styled, { css } from 'styled-components'
+import { FWBMark } from './ui/core/icons'
+
+const Header = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
 
 const LPCard = () => {
   const { showModal } = useModal()
@@ -16,7 +24,18 @@ const LPCard = () => {
 
   return (
     <Card>
-      <h4>Uniswap V3 FWB Pro - ETH Liquidity Program</h4>
+      <Header>
+        <span>
+        <FWBTag />
+        </span>
+        <FWBMark />
+      </Header>
+      <div>
+        <h5>
+          Uniswap V3
+        </h5>
+      </div>
+      <h4>ETH Liquidity Program</h4>
       <ValuesSection
         totalStakedTokens={totalStakedTokens}
         pendingRewards={pendingRewards}

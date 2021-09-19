@@ -33,8 +33,6 @@ const BaseDisabledStyles = css`
   --icon-fill: ${props => props.theme.colors.neutral500};
 `;
 
-
-
 export const Button = styled.div`
   ${BaseTextStyles}
   background-color: ${props => props.theme.colors.primary500};
@@ -200,5 +198,64 @@ export const TextButton = styled.div`
 
 TextButton.propTypes = { isDisabled: PropTypes.bool }
 TextButton.defaultProps = { isDisabled: false }
+
+export const FabButton = styled.div`
+  ${BaseTextStyles}
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid ${props => props.theme.colors.neutral100};
+  padding: 0.7rem;
+  box-sizing: border-box;
+  color: ${props => props.theme.colors.neutral050};
+  --icon-stroke: ${props => props.theme.colors.neutral050};
+  --icon-fill: ${props => props.theme.colors.neutral050};
+  border-radius: 20px;
+  transition: border, background-color 300ms;
+  > svg {
+    width: 1.3rem;
+    height: 1.3rem;
+  }
+
+  &:hover {
+    border: 1px solid ${props => props.theme.colors.primary500};
+    color: ${props => props.theme.colors.primary500};
+    --icon-stroke: ${props => props.theme.colors.primary500};
+    --icon-fill: ${props => props.theme.colors.primary500};
+  }
+
+  &:focus {
+    border: 1px solid ${props => props.theme.colors.primary500};
+    color: ${props => props.theme.colors.neutral000};
+    --icon-stroke: ${props => props.theme.colors.neutral000};
+    --icon-fill: ${props => props.theme.colors.neutral000};
+  }
+
+  &:active {
+    background-color: ${props => props.theme.colors.neutral050};
+    border: 1px solid ${props => props.theme.colors.neutral000};
+  }
+
+  ${props =>
+    props.isDisabled && css`
+      &,
+      &:hover,
+      &:focus,
+      &:active {
+        color: ${props => props.theme.colors.neutral600};
+        --icon-stroke: ${props => props.theme.colors.neutral600};
+        --icon-fill: ${props => props.theme.colors.neutral600};
+        border: 1px solid ${props => props.theme.colors.neutral600};
+        box-shadow: none;
+      }
+      color: ${props => props.theme.colors.neutral600};
+      --icon-stroke: ${props => props.theme.colors.neutral600};
+      --icon-fill: ${props => props.theme.colors.neutral600};
+      box-shadow: none;
+    `}
+`
+FabButton.propTypes = { isDisabled: PropTypes.bool }
+FabButton.defaultProps = { isDisabled: false }
+
 
 export default {}
