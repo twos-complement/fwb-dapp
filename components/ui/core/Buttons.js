@@ -3,8 +3,8 @@ import styled, { css } from 'styled-components'
 
 const BaseTextStyles = css`
   font-family: TWK Everett;
-  font-size: 1rem;
-  line-height: 1.25rem;
+  font-size: 1.6rem;
+  line-height: 2rem;
   text-transform: uppercase;
   font-feature-settings: 'zero' on, 'ss02' on;
   text-align: center;
@@ -37,7 +37,7 @@ const BaseDisabledStyles = css`
 export const Button = styled.div`
   ${BaseTextStyles}
   background-color: ${props => props.theme.colors.primary500};
-  padding: 0.75rem 2rem;
+  padding: 1.2rem 3.2rem;
   color: ${props => props.theme.colors.neutral000};
   border-radius: 40px;
   box-shadow: 0px 2px 20px rgba(231, 34, 128, 0.75);

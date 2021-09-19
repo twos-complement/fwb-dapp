@@ -51,11 +51,16 @@ const GlobalStyles = createGlobalStyle`
   }
 
   @font-face {
-    font-family: orpheuspro, serif;
-    font-weight: 400;
+    font-family:"orpheuspro";
+    src:
+      url("/fonts/orpheus-pro.woff2") format("woff2"),
+      url("/fonts/orpheus-pro.woff") format("woff"),
+      url("/fonts/orpheus-pro.oft") format("opentype");
+    font-display: auto;
     font-style: italic;
-    font-display: swap;
+    font-weight: 400;
   }
+
   * {
     box-sizing: border-box;
     font-family: "TWK Everett", 'Work Sans', sans-serif;

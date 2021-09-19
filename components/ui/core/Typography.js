@@ -20,17 +20,19 @@ H1.propTypes = { ...propTypesColor }
 H1.defaultProps = { color: 'neutral900' }
 
 export const H1Alt = styled.h1`
-  font-family: "orpheuspro", serif;
+  font-family: 'orpheuspro', serif;
   font-style: italic;
-  font-size: 5.625rem;
-  line-height: 90%;
+  font-size: 9rem;
+  line-height: 8rem;
   text-transform: initial;
   margin: 0;
   color: ${props => props.theme.colors[props.color]};
+  font-feature-settings: 'zero' on;
 `
 
-H1.propTypes = { ...propTypesColor }
-H1.defaultProps = { color: 'neutral900' }
+H1Alt.propTypes = { ...propTypesColor }
+H1Alt.defaultProps = { color: 'neutral900' }
+
 export const H2Styles = css`
   font-family: TWK Everett;
   font-size: 4rem;
@@ -43,6 +45,20 @@ export const H2Styles = css`
 export const H2 = styled.h2`
   ${H2Styles}
 `
+
+export const H2Alt = styled.h2`
+  font-family: 'orpheuspro', serif;
+  font-style: italic;
+  font-size: 5rem;
+  line-height: 5rem;
+  text-transform: initial;
+  margin: 0;
+  color: ${props => props.theme.colors[props.color]};
+  font-feature-settings: 'zero' on;
+`
+
+H2Alt.propTypes = { ...propTypesColor }
+H2Alt.defaultProps = { color: 'neutral900' }
 
 export const H3Styles = css`
   font-family: TWK Everett;
@@ -57,6 +73,20 @@ export const H3 = styled.h3`
   ${H3Styles}
 `
 
+export const H3Alt = styled.h3`
+  font-family: 'orpheuspro', serif;
+  font-style: italic;
+  font-size: 3.2rem;
+  line-height: 4rem;
+  text-transform: initial;
+  margin: 0;
+  color: ${props => props.theme.colors[props.color]};
+  font-feature-settings: 'zero' on;
+`
+
+H3Alt.propTypes = { ...propTypesColor }
+H3Alt.defaultProps = { color: 'neutral900' }
+
 export const H4Styles = css`
   font-family: TWK Everett;
   font-size: 1.5rem;
@@ -69,6 +99,20 @@ export const H4Styles = css`
 export const H4 = styled.h4`
   ${H4Styles}
 `
+
+export const H4Alt = styled.h4`
+  font-family: 'orpheuspro', serif;
+  font-style: italic;
+  font-size: 2.4rem;
+  line-height: 2.8rem;
+  text-transform: initial;
+  margin: 0;
+  color: ${props => props.theme.colors[props.color]};
+  font-feature-settings: 'zero' on;
+`
+
+H4Alt.propTypes = { ...propTypesColor }
+H4Alt.defaultProps = { color: 'neutral900' }
 
 export const H5Styles = css`
   font-family: TWK Everett;

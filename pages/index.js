@@ -5,7 +5,7 @@ import TotalCapitalCard from '../components/TotalCapitalCard'
 import TokenPriceCard from '../components/TokenPriceCard'
 import LPCard from '../components/LPCard'
 import DirectionalFadeIn from '../components/ui/core/DirectionalFadeIn'
-import { H2, H3, H1Alt } from '../components/ui/core/Typography'
+import { H3Alt } from '../components/ui/core/Typography'
 import ConnectButton from '../components/ui/core/ConnectButton'
 import { FWB, FWBLong } from '../components/ui/core/icons'
 
@@ -48,7 +48,7 @@ const Header = styled.div`
       padding: 22px 16px 0 16px;
     `}
   `}
-`;
+`
 
 const Hero = styled.div`
   ${({ theme: { bp } }) => css`
@@ -137,7 +137,7 @@ const CardsWrapper = styled.div`
     ${bp.md`
       grid-gap: 24px; 
     `}
-    
+
     ${bp.sm`
       grid-gap: 16px; 
     `}
@@ -175,10 +175,9 @@ const Home = () => {
               <div>
                 <FWBLong />
                 <h1>Liquidity Mining</h1>
-                <H3 color="neutral000">
+                <H3Alt color="neutral000">
                   Earn rewards for supplying liquidity for FWB Pro on Uniswap V3
-                </H3>
-                <H1Alt>Header Alt</H1Alt>
+                </H3Alt>
               </div>
             </Hero>
           </DirectionalFadeIn>
