@@ -44,7 +44,7 @@ const StakedNFTModal = ({ id, pendingRewards }) => {
 }
 
 StakedNFTModal.propTypes = {
-  id: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
   pendingRewards: PropTypes.string.isRequired,
 }
 

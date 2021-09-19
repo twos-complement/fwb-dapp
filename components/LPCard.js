@@ -6,9 +6,11 @@ import StakeModal from './ui/uniswap-v3/StakeModal'
 import useModal from './hooks/useModal'
 import useLPTokens from './hooks/useLPTokens'
 import useAccruedRewards from './hooks/useAccruedRewards'
+import useWeb3 from './hooks/useWeb3'
 
 const LPCard = () => {
   const { showModal } = useModal()
+  const { accounts } = useWeb3()
   const { tokens, pendingRewards, totalStakedTokens } = useLPTokens()
   const { accruedRewards } = useAccruedRewards()
 
@@ -27,6 +29,7 @@ const LPCard = () => {
         handleClaimClick={() => {
           console.log('Claiming rewards...')
         }}
+        stakeEnabled={accounts.length > 0}
         claimEnabled={Number(accruedRewards) > 0}
       />
     </Card>

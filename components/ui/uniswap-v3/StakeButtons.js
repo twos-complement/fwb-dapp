@@ -9,9 +9,16 @@ const Layout = styled.div`
   grid-column-gap: 16px;
 `
 
-const StakeButtons = ({ handleStakeClick, handleClaimClick, claimEnabled }) => (
+const StakeButtons = ({
+  handleStakeClick,
+  handleClaimClick,
+  stakeEnabled,
+  claimEnabled,
+}) => (
   <Layout>
-    <Button onClick={handleStakeClick}>Stake & Unstake LP Tokens</Button>
+    <Button onClick={handleStakeClick} isDisabled={!stakeEnabled}>
+      Stake & Unstake LP Tokens
+    </Button>
     <Button
       onClick={() => claimEnabled && handleClaimClick()}
       isDisabled={!claimEnabled}
