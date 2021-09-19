@@ -27,11 +27,12 @@ const BaseDisabledStyles = css`
     background-color: ${props => props.theme.colors.neutral700};
     box-shadow: none;
   }
+  cursor: not-allowed;
   color: ${props => props.theme.colors.neutral500};
   box-shadow: none;
   --icon-stroke: ${props => props.theme.colors.neutral500};
   --icon-fill: ${props => props.theme.colors.neutral500};
-`;
+`
 
 export const Button = styled.div`
   ${BaseTextStyles}
@@ -57,14 +58,13 @@ export const Button = styled.div`
     background-color: ${props => props.theme.colors.primary500};
   }
 
-  ${props =>
-    props.isDisabled && BaseDisabledStyles}
+  ${props => props.isDisabled && BaseDisabledStyles}
 `
 
 Button.propTypes = { isDisabled: PropTypes.bool }
 Button.defaultProps = { isDisabled: false }
 
-export const PrimaryButton = Button;
+export const PrimaryButton = Button
 
 PrimaryButton.propTypes = { isDisabled: PropTypes.bool }
 PrimaryButton.defaultProps = { isDisabled: false }
@@ -94,8 +94,7 @@ export const SecondaryButton = styled.div`
     box-shadow: none;
   }
 
-  ${props =>
-    props.isDisabled && BaseDisabledStyles}
+  ${props => props.isDisabled && BaseDisabledStyles}
 `
 SecondaryButton.propTypes = { isDisabled: PropTypes.bool }
 SecondaryButton.defaultProps = { isDisabled: false }
@@ -131,7 +130,8 @@ export const OutlinedButton = styled.div`
   }
 
   ${props =>
-    props.isDisabled && css`
+    props.isDisabled &&
+    css`
       &,
       &:hover,
       &:focus,
@@ -181,7 +181,8 @@ export const TextButton = styled.div`
   }
 
   ${props =>
-    props.isDisabled && css`
+    props.isDisabled &&
+    css`
       &,
       &:hover,
       &:focus,
@@ -237,7 +238,8 @@ export const FabButton = styled.div`
   }
 
   ${props =>
-    props.isDisabled && css`
+    props.isDisabled &&
+    css`
       &,
       &:hover,
       &:focus,
@@ -256,6 +258,5 @@ export const FabButton = styled.div`
 `
 FabButton.propTypes = { isDisabled: PropTypes.bool }
 FabButton.defaultProps = { isDisabled: false }
-
 
 export default {}
