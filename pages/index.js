@@ -102,10 +102,7 @@ const Hero = styled.div`
 const TokenPriceLayout = styled(Hero)`
   ${({ theme: { bp, colors } }) => css`
     border-left: 1px solid ${colors.neutral700};
-
-    > *:last-child {
-      padding-left: 38px;
-    }
+    padding: 48px;
 
     ${bp.md`
       border-top: 1px solid ${colors.neutral700};
@@ -129,26 +126,12 @@ const TokenPriceLayout = styled(Hero)`
   `}
 `
 
-const CardsWrapper = styled.div`
-  ${({ theme: { bp } }) => css`
-    display: grid;
-    grid-gap: 10px;
-
-    ${bp.md`
-      grid-gap: 24px; 
-    `}
-
-    ${bp.sm`
-      grid-gap: 16px; 
-    `}
-  `}
-`
-
 const PricesWrapper = styled.div`
   ${({ theme: { bp } }) => css`
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-column-gap: 20px;
+    padding-bottom: 24px;
 
     ${bp.sm`
       grid-template-columns: 1fr;
@@ -183,13 +166,11 @@ const Home = () => {
           </DirectionalFadeIn>
           <DirectionalFadeIn direction="right" delay={200}>
             <TokenPriceLayout>
-              <CardsWrapper>
-                <PricesWrapper>
-                  <TotalCapitalCard />
-                  <TokenPriceCard />
-                </PricesWrapper>
-                <LPCard />
-              </CardsWrapper>
+              <PricesWrapper>
+                <TotalCapitalCard />
+                <TokenPriceCard />
+              </PricesWrapper>
+              <LPCard />
             </TokenPriceLayout>
           </DirectionalFadeIn>
         </Layout>
