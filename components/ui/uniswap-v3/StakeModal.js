@@ -27,36 +27,42 @@ const StakeModal = ({ tokens }) => {
       <p>
         Your Uniswap V3 LP tokens eligible for FWB Pro rewards are listed below.
       </p>
-      <div>
-        <h5>Unstaked</h5>
-        <NFTList>
-          {unstakedTokens.map(token => (
-            <NFTListItem
-              key={token.id}
-              id={token.id}
-              minTick={token.tickLower}
-              maxTick={token.tickUpper}
-              handleClick={() => showModal(<UnstakedNFTModal id={token.id} />)}
-            />
-          ))}
-        </NFTList>
-      </div>
-      <div>
-        <h5>Staked</h5>
-        <NFTList>
-          {stakedTokens.map(token => (
-            <NFTListItem
-              key={token.id}
-              id={token.id}
-              minTick={token.tickLower}
-              maxTick={token.tickUpper}
-              handleClick={() => showModal(<StakedNFTModal id={id} />)}
-            >
-              <p>{id}</p>
-            </NFTListItem>
-          ))}
-        </NFTList>
-      </div>
+      {unstakedTokens.length > 0 && (
+        <div>
+          <h5>Unstaked</h5>
+          <NFTList>
+            {unstakedTokens.map(token => (
+              <NFTListItem
+                key={token.id}
+                id={token.id}
+                minTick={token.tickLower}
+                maxTick={token.tickUpper}
+                handleClick={() =>
+                  showModal(<UnstakedNFTModal id={token.id} />)
+                }
+              />
+            ))}
+          </NFTList>
+        </div>
+      )}
+      {stakedTokens.length > 0 && (
+        <div>
+          <h5>Staked</h5>
+          <NFTList>
+            {stakedTokens.map(token => (
+              <NFTListItem
+                key={token.id}
+                id={token.id}
+                minTick={token.tickLower}
+                maxTick={token.tickUpper}
+                handleClick={() => showModal(<StakedNFTModal id={id} />)}
+              >
+                <p>{id}</p>
+              </NFTListItem>
+            ))}
+          </NFTList>
+        </div>
+      )}
       <Button onClick={hideModal}>Close</Button>
     </Layout>
   )
