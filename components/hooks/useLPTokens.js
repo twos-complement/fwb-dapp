@@ -6,7 +6,7 @@ import {
   Incentive,
   IncentiveToken0,
   IncentiveToken1,
-} from '../../util/contants'
+} from '../../util/constants'
 
 const useLPTokens = () => {
   const [tokens, setTokens] = useState([])

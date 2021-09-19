@@ -1,14 +1,13 @@
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
-import HistoryCard from '../core/HistoryCard';
+import HistoryCard from '../core/HistoryCard'
 
 const Layout = styled.div`
   display: grid;
   grid-template-columns: 66px auto;
   grid-template-rows: 66px;
-  grid-template-areas:
-    'symbol details';
+  grid-template-areas: 'symbol details';
   grid-column-gap: 16px;
 `
 
@@ -40,20 +39,21 @@ const Details = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
-`;
+`
 
 const Multiplier = styled.span`
   text-transform: uppercase;
   color: ${props => props.theme.colors.neutral400};
-`;
+`
 
-
-const CapitalCard = ({ symbol, value, label, multiplier = "" }) => (
+const CapitalCard = ({ symbol, value, label, multiplier = '' }) => (
   <HistoryCard>
     <Layout>
       <Symbol>{symbol}</Symbol>
       <Details>
-        <Value>{value} <Multiplier>{multiplier}</Multiplier></Value>
+        <Value>
+          {value} <Multiplier>{multiplier}</Multiplier>
+        </Value>
         <Label>{label}</Label>
       </Details>
     </Layout>
@@ -61,7 +61,7 @@ const CapitalCard = ({ symbol, value, label, multiplier = "" }) => (
 )
 
 CapitalCard.propTypes = {
-  symbol: PropTypes.string.isRequired,
+  symbol: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
   value: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   label: PropTypes.string,

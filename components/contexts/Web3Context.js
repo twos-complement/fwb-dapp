@@ -5,7 +5,7 @@ import Web3Modal from 'web3modal'
 
 import UniswapV3PositionsABI from '../../util/abis/uniswap-v3-positions.json'
 import UniswapV3StakerABI from '../../util/abis/uniswap-v3-staker.json'
-import { IncentiveStruct, Incentive } from '../../util/contants'
+import { IncentiveStruct, Incentive } from '../../util/constants'
 
 export const Web3Context = createContext()
 

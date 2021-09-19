@@ -1,9 +1,11 @@
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
-import { Button } from './ui/core/Buttons'
 import useModal from './hooks/useModal'
+import useWeb3 from './hooks/useWeb3'
 import { Body1 } from './ui/core/Typography'
+import { Button } from './ui/core/Buttons'
+import { Incentive } from '../util/constants'
 
 const Layout = styled.div`
   display: grid;
@@ -19,6 +21,12 @@ const ButtonsLayout = styled.div`
 
 const UnstakedNFTModal = ({ id }) => {
   const { hideModal } = useModal()
+  const { contracts } = useWeb3()
+
+  async function stake() {
+    await contracts.UniswapV3Staker.methods.stakeToken(Incentive, id).call()
+    hideModal()
+  }
 
   return (
     <Layout>
@@ -30,13 +38,7 @@ const UnstakedNFTModal = ({ id }) => {
       </Body1>
       <h6>Active Farm</h6>
       <ButtonsLayout>
-        <Button
-          onClick={() => {
-            console.log('Staking', id)
-          }}
-        >
-          Deposit & Stake
-        </Button>
+        <Button onClick={stake}>Deposit & Stake</Button>
         <Button onClick={hideModal}>Cancel</Button>
       </ButtonsLayout>
     </Layout>

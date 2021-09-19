@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 
 import useWeb3 from './useWeb3'
 
-import { RewardToken } from '../../util/contants'
+import { RewardToken } from '../../util/constants'
 
 const useAccruedRewards = () => {
   const { contracts, accounts, web3 } = useWeb3()
