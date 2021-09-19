@@ -9,14 +9,18 @@ const Wrapper = styled.div`
   cursor: pointer;
 `
 
-const NFTListItem = ({ id, handleClick }) => (
+const NFTListItem = ({ id, minTick, maxTick, handleClick }) => (
   <Wrapper onClick={handleClick}>
-    <Body1>{id}</Body1>
+    <Body1>FWB/ETH</Body1>
+    <Body1>ID: {id}</Body1>
+    <Body1>
+      min/max {minTick} / {maxTick}
+    </Body1>
   </Wrapper>
 )
 
 NFTListItem.propTypes = {
-  id: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
   handleClick: PropTypes.func.isRequired,
 }
 

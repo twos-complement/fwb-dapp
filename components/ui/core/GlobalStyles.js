@@ -18,8 +18,8 @@ const GlobalStyles = createGlobalStyle`
     height: 100%;
     padding: 0;
     margin: 0;
-    background-color: ${props => props.theme.colors.neutral050};
-    color: ${props => props.theme.colors.neutral800};
+    background-color: ${props => props.theme.colors.neutral900};
+    color: ${props => props.theme.colors.neutral000};
     font-size: 62.5%; /* base 10 rems */
   }
   @font-face {

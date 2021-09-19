@@ -6,7 +6,6 @@ import GlobalStyles from '../components/ui/core/GlobalStyles'
 import { Web3Provider } from '../components/contexts/Web3Context'
 import { ModalProvider } from '../components/contexts/ModalContext'
 import Modal from '../components/ui/core/Modal'
-import Header from '../components/ui/core/Header'
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -25,7 +24,6 @@ function MyApp({ Component, pageProps }) {
         <Web3Provider>
           <ModalProvider>
             <GlobalStyles />
-            <Header />
             <Component {...pageProps} />
             <Modal />
           </ModalProvider>

@@ -44,7 +44,7 @@ const UnstakedNFTModal = ({ id }) => {
 }
 
 UnstakedNFTModal.propTypes = {
-  id: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
 }
 
 export default UnstakedNFTModal

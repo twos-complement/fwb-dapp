@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
-import Card from '../core/Card'
+import HistoryCard from '../core/HistoryCard';
 
 const Layout = styled.div`
   display: grid;
@@ -14,24 +14,27 @@ const Layout = styled.div`
 
 const Symbol = styled.p`
   grid-area: symbol;
+  color: ${props => props.theme.colors.neutral050};
 `
 
 const Value = styled.p`
   grid-area: value;
+  color: ${props => props.theme.colors.neutral050};
 `
 
 const Label = styled.p`
   grid-area: label;
+  color: ${props => props.theme.colors.neutral050};
 `
 
 const CapitalCard = ({ symbol, value, label }) => (
-  <Card>
+  <HistoryCard>
     <Layout>
       <Symbol>{symbol}</Symbol>
       <Value>{value}</Value>
       <Label>{label}</Label>
     </Layout>
-  </Card>
+  </HistoryCard>
 )
 
 CapitalCard.propTypes = {
