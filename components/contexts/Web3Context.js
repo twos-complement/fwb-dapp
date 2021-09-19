@@ -5,6 +5,7 @@ import Web3Modal from 'web3modal'
 
 import UniswapV3PositionsABI from '../../util/abis/uniswap-v3-positions.json'
 import UniswapV3StakerABI from '../../util/abis/uniswap-v3-staker.json'
+import { IncentiveStruct, Incentive } from '../../util/contants'
 
 export const Web3Context = createContext()
 
@@ -22,6 +23,7 @@ export const Web3Provider = ({ children }) => {
   const [accounts, setAccounts] = useState([])
   const [contracts, setContracts] = useState({})
   const [web3, setWeb3] = useState()
+  const [encodedIncentiveId, setEncodedIncentiveId] = useState()
 
   useEffect(() => {
     const web3Modal = new Web3Modal({
@@ -56,10 +58,16 @@ export const Web3Provider = ({ children }) => {
       UniswapV3Positions,
       UniswapV3Staker,
     })
+
+    // Encode Incentive ID:
+    const incentiveId = web3.eth.abi.encodeParameter(IncentiveStruct, Incentive)
+    setEncodedIncentiveId(web3.utils.keccak256(incentiveId))
   }
 
   return (
-    <Web3Context.Provider value={{ connect, accounts, contracts, web3 }}>
+    <Web3Context.Provider
+      value={{ connect, accounts, contracts, web3, encodedIncentiveId }}
+    >
       {children}
     </Web3Context.Provider>
   )

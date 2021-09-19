@@ -4,15 +4,15 @@ import useWeb3 from './useWeb3'
 
 import { RewardToken } from '../../util/contants'
 
-const useRewards = () => {
+const useAccruedRewards = () => {
   const { contracts, accounts, web3 } = useWeb3()
-  const [rewards, setRewards] = useState(0)
+  const [accruedRewards, setAccruedRewards] = useState('0.0000')
 
   async function loadRewards() {
     const rewards = await contracts.UniswapV3Staker.methods
       .rewards(RewardToken, accounts[0])
       .call()
-    setRewards(rewards)
+    setAccruedRewards(accruedRewards.toString())
   }
 
   useEffect(() => {
@@ -20,7 +20,7 @@ const useRewards = () => {
     loadRewards()
   }, [contracts, accounts])
 
-  return { rewards }
+  return { accruedRewards }
 }
 
-export default useRewards
+export default useAccruedRewards

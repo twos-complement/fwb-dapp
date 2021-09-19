@@ -4,26 +4,21 @@ import StakeButtons from './ui/uniswap-v3/StakeButtons'
 import StakeModal from './ui/uniswap-v3/StakeModal'
 
 import useModal from './hooks/useModal'
-import useFWBProLPTokens from './hooks/useFWBProLPTokens'
-import useRewards from './hooks/useRewards'
+import useLPTokens from './hooks/useLPTokens'
+import useAccruedRewards from './hooks/useAccruedRewards'
 
 const LPCard = () => {
-  // TODO: Fetch data:
-  const stakedNFTs = '0'
-  const pendingRewards = '0.00000'
-  const accruedRewards = '2.00000'
-
   const { showModal } = useModal()
-  const { tokens } = useFWBProLPTokens()
-  const { rewards } = useRewards()
+  const { tokens, pendingRewards, totalStakedTokens } = useLPTokens()
+  const { accruedRewards } = useAccruedRewards()
 
   return (
     <Card>
       <h4>Uniswap V3 FWB Pro - ETH Liquidity Program</h4>
       <ValuesSection
-        stakedNFTs={stakedNFTs}
+        totalStakedTokens={totalStakedTokens}
         pendingRewards={pendingRewards}
-        accruedRewards={rewards.toString()}
+        accruedRewards={accruedRewards}
       />
       <StakeButtons
         handleStakeClick={() => {

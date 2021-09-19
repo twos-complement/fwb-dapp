@@ -12,10 +12,14 @@ const Layout = styled.div`
   grid-column-gap: 16px;
 `
 
-const ValueSection = ({ stakedNFTs, pendingRewards, accruedRewards }) => (
+const ValueSection = ({
+  totalStakedTokens,
+  pendingRewards,
+  accruedRewards,
+}) => (
   <Layout>
     <div>
-      <h5>{stakedNFTs}</h5>
+      <h5>{totalStakedTokens}</h5>
       <Caption>Staked Uniswap V3 NFTs</Caption>
     </div>
     <div>
@@ -30,7 +34,7 @@ const ValueSection = ({ stakedNFTs, pendingRewards, accruedRewards }) => (
 )
 
 ValueSection.propTypes = {
-  stakedNFTs: PropTypes.string.isRequired,
+  totalStakedTokens: PropTypes.number.isRequired,
   pendingRewards: PropTypes.string.isRequired,
   accruedRewards: PropTypes.string.isRequired,
 }
