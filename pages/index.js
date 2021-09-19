@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 import TotalCapitalCard from '../components/TotalCapitalCard'
 import TokenPriceCard from '../components/TokenPriceCard'
@@ -10,61 +10,151 @@ import ConnectButton from '../components/ui/core/ConnectButton'
 import { FWB, FWBLong } from '../components/ui/core/icons'
 
 const Layout = styled.div`
-  display: grid;
-  grid-template-columns: 1.2fr 2fr;
-  grid-gap: 20px;
-  padding: 0 48px;
-  margin: 0 auto;
-  height: 100vh;
+  ${({ theme: { bp } }) => css`
+    display: grid;
+    grid-template-columns: 1.2fr 2fr;
+    grid-gap: 20px;
+    padding: 0 48px;
+    margin: 0 auto;
+    height: 100vh;
 
-  > *:first-child {
-    border-right: 1px solid ${props => props.theme.colors.neutral700};
-    padding: 10px 48px 10px 0;
-  }
+    ${bp.md`
+      grid-template-columns: 1fr;
+      padding: 0;
+      height: auto;
+    `}
+
+    ${bp.sm`
+      grid-template-columns: 1fr;
+      padding: 0;
+      height: auto;
+    `}
+  `}
 `
 
-const Hero = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-
-  > *:first-child {
+const Header = styled.div`
+  ${({ theme: { bp } }) => css`
     position: absolute;
-    top: 24px;
-    left: 0px;
-  }
-
-  > *:last-child {
-    display: grid;
-    grid-row-gap: 40px;
     width: 100%;
-  }
+    display: flex;
+    left: 0;
+    justify-content: space-between;
+    right: 0;
+    margin: 0;
+    padding: 24px 24px 0 24px;
+    z-index: 1;
+
+    ${bp.sm`
+      padding: 22px 16px 0 16px;
+    `}
+  `}
+`;
+
+const Hero = styled.div`
+  ${({ theme: { bp } }) => css`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 10px 48px 10px 0;
+
+    > * {
+      display: grid;
+      grid-row-gap: 40px;
+      width: 100%;
+    }
+
+    svg:first-child {
+      align-self: left;
+    }
+
+    ${bp.md`
+      margin-top: 66px;
+      padding: 24px;
+
+      > * {
+        grid-row-gap: 40px; 
+      }
+
+      svg:first-child {
+        width: 350px; 
+        align-self: left;
+      }
+    `}
+
+    ${bp.sm`
+      margin-top: 66px;
+      padding: 16px;
+      
+      > * {
+        grid-row-gap: 2rem; 
+      }
+
+      svg:first-child {
+        width: 250px; 
+        align-self: left;
+      }
+    `}
+  `}
 `
 
 const TokenPriceLayout = styled(Hero)`
-  > *:first-child {
-    position: absolute;
-    top: 24px;
-    left: auto;
-    right: 0px;
-  }
+  ${({ theme: { bp, colors } }) => css`
+    border-left: 1px solid ${colors.neutral700};
 
-  > *:last-child {
-    padding-left: 38px;
-  }
+    > *:last-child {
+      padding-left: 38px;
+    }
+
+    ${bp.md`
+      border-top: 1px solid ${colors.neutral700};
+      border-left: none;
+      margin-top: 40px;
+
+      > *:last-child {
+        padding: 0;
+      }
+    `}
+
+    ${bp.sm`
+      border-top: 1px solid ${colors.neutral700};
+      border-left: none;
+      margin-top: 24px;
+
+      > *:last-child {
+        padding: 0;
+      }
+    `}
+  `}
 `
 
 const CardsWrapper = styled.div`
-  display: grid;
-  grid-gap: 10px;
+  ${({ theme: { bp } }) => css`
+    display: grid;
+    grid-gap: 10px;
+
+    ${bp.md`
+      grid-gap: 24px; 
+    `}
+    
+    ${bp.sm`
+      grid-gap: 16px; 
+    `}
+  `}
 `
 
 const PricesWrapper = styled.div`
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-column-gap: 20px;
+  ${({ theme: { bp } }) => css`
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 20px;
+
+    ${bp.sm`
+      grid-template-columns: 1fr;
+      grid-row-gap: 16px;
+    `}
+  `}
 `
 
 const Home = () => {
@@ -76,9 +166,12 @@ const Home = () => {
       </Head>
       <main>
         <Layout>
+          <Header>
+            <FWB />
+            <ConnectButton />
+          </Header>
           <DirectionalFadeIn direction="up" threshold={0}>
             <Hero>
-              <FWB />
               <div>
                 <FWBLong />
                 <h1>Liquidity Mining</h1>
@@ -90,11 +183,10 @@ const Home = () => {
           </DirectionalFadeIn>
           <DirectionalFadeIn direction="right" delay={200}>
             <TokenPriceLayout>
-              <ConnectButton />
               <CardsWrapper>
                 <PricesWrapper>
-                  <TokenPriceCard />
                   <TotalCapitalCard />
+                  <TokenPriceCard />
                 </PricesWrapper>
                 <LPCard />
               </CardsWrapper>
