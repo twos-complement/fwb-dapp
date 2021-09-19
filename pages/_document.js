@@ -43,6 +43,7 @@ export default class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap"
             rel="stylesheet"
           ></link>
+          <link rel="stylesheet" href="https://use.typekit.net/sqa3xeu.css"></link>
           <link
             rel="preload"
             href="/fonts/TWKEverett-Medium-web.ttf"

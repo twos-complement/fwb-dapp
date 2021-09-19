@@ -5,7 +5,7 @@ import TotalCapitalCard from '../components/TotalCapitalCard'
 import TokenPriceCard from '../components/TokenPriceCard'
 import LPCard from '../components/LPCard'
 import DirectionalFadeIn from '../components/ui/core/DirectionalFadeIn'
-import { H2, H3 } from '../components/ui/core/Typography'
+import { H2, H3, H1Alt } from '../components/ui/core/Typography'
 import ConnectButton from '../components/ui/core/ConnectButton'
 import { FWB, FWBLong } from '../components/ui/core/icons'
 
@@ -85,6 +85,7 @@ const Home = () => {
                 <H3 color="neutral000">
                   Earn rewards for supplying liquidity for FWB Pro on Uniswap V3
                 </H3>
+                <H1Alt>Header Alt</H1Alt>
               </div>
             </Hero>
           </DirectionalFadeIn>

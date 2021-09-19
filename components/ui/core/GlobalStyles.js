@@ -49,6 +49,13 @@ const GlobalStyles = createGlobalStyle`
     font-style: bold;
     font-display: swap;
   }
+
+  @font-face {
+    font-family: orpheuspro, serif;
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+  }
   * {
     box-sizing: border-box;
     font-family: "TWK Everett", 'Work Sans', sans-serif;

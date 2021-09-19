@@ -19,6 +19,18 @@ export const H1 = styled.h1`
 H1.propTypes = { ...propTypesColor }
 H1.defaultProps = { color: 'neutral900' }
 
+export const H1Alt = styled.h1`
+  font-family: "orpheuspro", serif;
+  font-style: italic;
+  font-size: 5.625rem;
+  line-height: 90%;
+  text-transform: initial;
+  margin: 0;
+  color: ${props => props.theme.colors[props.color]};
+`
+
+H1.propTypes = { ...propTypesColor }
+H1.defaultProps = { color: 'neutral900' }
 export const H2Styles = css`
   font-family: TWK Everett;
   font-size: 4rem;
