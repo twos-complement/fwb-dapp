@@ -23,6 +23,7 @@ export const Web3Provider = ({ children }) => {
   const [accounts, setAccounts] = useState([])
   const [contracts, setContracts] = useState({})
   const [web3, setWeb3] = useState()
+  const [provider, setProvider] = useState()
   const [encodedIncentiveId, setEncodedIncentiveId] = useState()
 
   useEffect(() => {
@@ -39,6 +40,7 @@ export const Web3Provider = ({ children }) => {
     const accounts = await web3.eth.getAccounts()
 
     // Set provider:
+    setProvider(provider)
     setWeb3(web3)
 
     // Set accounts:
@@ -64,9 +66,23 @@ export const Web3Provider = ({ children }) => {
     setEncodedIncentiveId(web3.utils.keccak256(incentiveId))
   }
 
+  async function disconnect() {
+    await web3Modal.clearCachedProvider()
+
+    console.log({web3Modal, provider})
+
+    if (provider?.disconnect && typeof provider.disconnect === 'function') {
+      await provider.disconnect();
+    }
+
+    setProvider(null)
+    setAccounts([])
+
+  }
+  
   return (
     <Web3Context.Provider
-      value={{ connect, accounts, contracts, web3, encodedIncentiveId }}
+      value={{ connect, disconnect, accounts, contracts, web3, encodedIncentiveId }}
     >
       {children}
     </Web3Context.Provider>

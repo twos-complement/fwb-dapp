@@ -115,6 +115,10 @@ export const OutlinedButton = styled.div`
     color: ${props => props.theme.colors.primary500};
     --icon-stroke: ${props => props.theme.colors.primary500};
     --icon-fill: ${props => props.theme.colors.primary500};
+
+    > * {
+      color: ${props => props.theme.colors.primary500};
+    }
   }
 
   &:focus {
@@ -125,7 +129,6 @@ export const OutlinedButton = styled.div`
   }
 
   &:active {
-    background-color: ${props => props.theme.colors.neutral050};
     border: 1px solid ${props => props.theme.colors.neutral000};
   }
 
@@ -164,6 +167,10 @@ export const TextButton = styled.div`
     color: ${props => props.theme.colors.primary500};
     --icon-stroke: ${props => props.theme.colors.primary500};
     --icon-fill: ${props => props.theme.colors.primary500};
+
+    > * {
+      color: ${props => props.theme.colors.primary500};
+    }
   }
 
   &:focus {

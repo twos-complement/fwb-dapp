@@ -17,7 +17,7 @@ const Wrapper = styled.div`
 `
 
 const ConnectButton = () => {
-  const { connect, accounts } = useWeb3()
+  const { connect, disconnect, accounts } = useWeb3()
   const buttonText =
     accounts.length > 0 ? maskWallet(accounts[0], 6) : 'Connect Wallet'
 
@@ -29,7 +29,7 @@ const ConnectButton = () => {
             <Tag>
               <Body1 color="neutral300">{maskWallet(accounts[0], 6)}</Body1>
             </Tag>
-            <FabButton>
+            <FabButton onClick={disconnect}>
               <Times />
             </FabButton>
           </>
