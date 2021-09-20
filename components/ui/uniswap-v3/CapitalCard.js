@@ -1,14 +1,14 @@
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
-import HistoryCard from '../core/HistoryCard'
+import ValueCard from '../core/ValueCard'
 
 const Layout = styled.div`
   display: grid;
   grid-template-columns: 66px auto;
   grid-template-rows: 66px;
   grid-template-areas: 'symbol details';
-  grid-column-gap: 16px;
+  grid-column-gap: 24px;
 `
 
 const Symbol = styled.p`
@@ -24,11 +24,11 @@ const Symbol = styled.p`
   align-items: center;
 `
 
-const Value = styled.p`
+const Value = styled.h4`
   color: ${props => props.theme.colors.neutral050};
 `
 
-const Label = styled.p`
+const Label = styled.h6`
   text-transform: uppercase;
   margin: 0;
   color: ${props => props.theme.colors.neutral400};
@@ -47,7 +47,7 @@ const Multiplier = styled.span`
 `
 
 const CapitalCard = ({ symbol, value, label, multiplier = '' }) => (
-  <HistoryCard>
+  <ValueCard>
     <Layout>
       <Symbol>{symbol}</Symbol>
       <Details>
@@ -57,7 +57,7 @@ const CapitalCard = ({ symbol, value, label, multiplier = '' }) => (
         <Label>{label}</Label>
       </Details>
     </Layout>
-  </HistoryCard>
+  </ValueCard>
 )
 
 CapitalCard.propTypes = {

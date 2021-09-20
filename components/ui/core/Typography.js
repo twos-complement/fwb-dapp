@@ -10,7 +10,7 @@ export const H1Styles = css`
   line-height: 8rem;
   text-transform: uppercase;
   font-feature-settings: 'zero' on, 'ss02' on;
-  margin: 0;
+  margin: 0 0 0 -0.7rem;
   color: ${props => props.theme.colors[props.color]};
 
   ${props => props.theme.bp.sm`

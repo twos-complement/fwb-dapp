@@ -3,12 +3,6 @@ import PropTypes from 'prop-types'
 
 import { Button } from '../core/Buttons'
 
-const Layout = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-column-gap: 16px;
-`
-
 const StakeButtons = ({
   handleStakeClick,
   handleClaimClick,
@@ -27,6 +21,17 @@ const StakeButtons = ({
     </Button>
   </Layout>
 )
+
+const Layout = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 16px;
+
+  ${props => props.theme.bp.sm`
+    grid-template-columns: 1fr;
+    grid-row-gap: 24px;
+  `}
+`
 
 StakeButtons.propTypes = {
   handleStakeClick: PropTypes.func.isRequired,

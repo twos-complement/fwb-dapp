@@ -206,7 +206,7 @@ export const FabButton = styled.div`
   justify-content: center;
   align-items: center;
   border: 1px solid ${props => props.theme.colors.neutral100};
-  padding: 0.7rem;
+  padding: 0.5rem;
   box-sizing: border-box;
   color: ${props => props.theme.colors.neutral050};
   --icon-stroke: ${props => props.theme.colors.neutral050};
@@ -214,8 +214,8 @@ export const FabButton = styled.div`
   border-radius: 20px;
   transition: border, background-color 300ms;
   > svg {
-    width: 1.3rem;
-    height: 1.3rem;
+    width: 2.4rem;
+    height: 2.4rem;
   }
 
   &:hover {

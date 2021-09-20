@@ -1,25 +1,25 @@
-import styled, { css } from 'styled-components';
-import { FWB } from './icons';
+import styled, { css } from 'styled-components'
+import { FWB } from './icons'
 
 export const Tag = styled.div`
-  ${({ theme: { colors }}) => css`
-    padding: 0.625rem 1rem; 
+  ${({ theme: { colors } }) => css`
     color: ${colors.neutral300};
     background-color: ${colors.neutral800};
+    padding: 0.75rem 2rem;
     border-radius: 2.5rem;
-    font-size: 1rem;
-    line-height: 24px;
+    font-size: 1.6rem;
+    line-height: 2px;
   `}
 `
 
 export const OutlineTag = styled.div`
-  ${({ theme: { colors }}) => css`
+  ${({ theme: { colors } }) => css`
     display: flex;
     justify-content: center;
     align-items: center;
     width: 95px;
     position: relative;
-    padding: 0.625rem 1rem; 
+    padding: 0.75rem 2rem;
     color: ${colors.neutral800};
     --icon-stroke: ${colors.neutral800};
     --icon-fill: ${colors.neutral800};
@@ -32,6 +32,10 @@ export const OutlineTag = styled.div`
       height: 24px;
     }
   `}
-`;
+`
 
-export const FWBTag = () => <OutlineTag><FWB /></OutlineTag> 
+export const FWBTag = () => (
+  <OutlineTag>
+    <FWB />
+  </OutlineTag>
+)
