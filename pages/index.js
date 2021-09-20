@@ -13,7 +13,7 @@ const Home = () => {
   return (
     <div>
       <Head>
-        <title>FWB dApp</title>
+        <title>FWB V3 Rewards</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
