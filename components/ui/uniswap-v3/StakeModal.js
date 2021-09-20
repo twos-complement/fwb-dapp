@@ -37,6 +37,7 @@ const StakeModal = ({ tokens }) => {
                 id={token.id}
                 minTick={token.tickLower}
                 maxTick={token.tickUpper}
+                isStaked={token.isStaked}
                 handleClick={() =>
                   showModal({
                     content: (
@@ -64,6 +65,7 @@ const StakeModal = ({ tokens }) => {
                 id={token.id}
                 minTick={token.tickLower}
                 maxTick={token.tickUpper}
+                isStaked={token.isStaked}
                 handleClick={() =>
                   showModal({
                     content: (
@@ -71,14 +73,13 @@ const StakeModal = ({ tokens }) => {
                         id={token.id}
                         minTick={token.tickLower}
                         maxTick={token.tickUpper}
+                        pendingRewards={token.reward}
                       />
                     ),
                     color: 'dark',
                   })
                 }
-              >
-                <p>{id}</p>
-              </NFTListItem>
+              />
             ))}
           </NFTList>
         </div>

@@ -1,11 +1,23 @@
-import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
 
 import useModal from '../../hooks/useModal'
 import DirectionalFadeIn from './DirectionalFadeIn'
 
+const Modal = () => {
+  const { content, hideModal, visible, color } = useModal()
+  return (
+    <Backdrop onClick={hideModal} visible={visible}>
+      <DirectionalFadeIn direction="up" duration={500}>
+        <Layout onClick={e => e.stopPropagation()}>
+          <Content color={color}>{content}</Content>
+        </Layout>
+      </DirectionalFadeIn>
+    </Backdrop>
+  )
+}
+
 const Backdrop = styled.div`
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -39,18 +51,5 @@ const Content = styled.div`
     };
   `}
 `
-
-const Modal = () => {
-  const { content, hideModal, visible, color } = useModal()
-  return (
-    <Backdrop onClick={hideModal} visible={visible}>
-      <DirectionalFadeIn direction="up" duration={500}>
-        <Layout onClick={e => e.stopPropagation()}>
-          <Content color={color}>{content}</Content>
-        </Layout>
-      </DirectionalFadeIn>
-    </Backdrop>
-  )
-}
 
 export default Modal

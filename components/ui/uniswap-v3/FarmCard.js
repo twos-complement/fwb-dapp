@@ -30,6 +30,11 @@ const Wrapper = styled.div`
   background-color: ${props => props.theme.colors.neutral800};
   border-radius: 16px;
   padding: 16px;
+
+  ${props => props.theme.bp.sm`
+    grid-template-columns: 1fr;
+    grid-row-gap: 24px;
+  `}
 `
 
 const Tokens = styled.div`

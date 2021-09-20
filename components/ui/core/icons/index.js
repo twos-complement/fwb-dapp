@@ -12,6 +12,7 @@ import XIcon from './x.svg'
 import ArrowUpRightIcon from './arrow-up-right.svg'
 import FWBTokenIcon from './fwb-token.svg'
 import EthereumTokenIcon from './ethereum-token.svg'
+import FWBAbbreviatedOutlineIcon from './fwb-abbreviated-outline.svg'
 
 export const FWB = withSvg(FWBIcon, 87, 32)
 export const FWBLong = withSvg(FWBLongIcon, 383, 30)
@@ -25,3 +26,4 @@ export const Times = withSvg(XIcon, 24, 24)
 export const ArrowUpRight = withSvg(ArrowUpRightIcon, 24, 24)
 export const FWBToken = withSvg(FWBTokenIcon, 64, 64)
 export const EthereumToken = withSvg(EthereumTokenIcon, 64, 64)
+export const FWBAbbreviatedOutline = withSvg(FWBAbbreviatedOutlineIcon, 58, 25)

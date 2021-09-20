@@ -6,7 +6,7 @@ import { RewardToken } from '../../util/constants'
 
 const useAccruedRewards = () => {
   const { contracts, accounts, web3 } = useWeb3()
-  const [accruedRewards, setAccruedRewards] = useState('0.0000')
+  const [accruedRewards, setAccruedRewards] = useState('0')
 
   async function loadRewards() {
     const rewards = await contracts.UniswapV3Staker.methods

@@ -25,7 +25,7 @@ const LPCard = () => {
       .call()
   }
 
-  const stakeEnabled = accounts.length > 0
+  const stakeEnabled = accounts.length > 0 && tokens && tokens.length > 0
 
   return (
     <Card>

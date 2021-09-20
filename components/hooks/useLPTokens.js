@@ -10,7 +10,7 @@ import {
 
 const useLPTokens = () => {
   const [tokens, setTokens] = useState([])
-  const [pendingRewards, setPendingRewards] = useState('0.0000')
+  const [pendingRewards, setPendingRewards] = useState('0')
   const [totalStakedTokens, setTotalStakedTokens] = useState(0)
   const { contracts, accounts, encodedIncentiveId } = useWeb3()
 

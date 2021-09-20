@@ -5,7 +5,7 @@ import { Button, TextButton } from '../core/Buttons'
 import { ArrowUpRight } from '../core/icons'
 import NFTData from './NFTData'
 
-const NFTListItem = ({ id, minTick, maxTick, handleClick }) => (
+const NFTListItem = ({ id, minTick, maxTick, handleClick, isStaked }) => (
   <Wrapper onClick={handleClick}>
     <NFTData id={id} minTick={minTick} maxTick={maxTick} />
     <ButtonLayout>
@@ -18,7 +18,7 @@ const NFTListItem = ({ id, minTick, maxTick, handleClick }) => (
           Opensea <ArrowUpRight />
         </TextButton>
       </a>
-      <Button>Stake</Button>
+      <Button>{isStaked ? 'Unstake' : 'Stake'}</Button>
     </ButtonLayout>
   </Wrapper>
 )
@@ -65,6 +65,7 @@ NFTListItem.propTypes = {
   minTick: PropTypes.string.isRequired,
   maxTick: PropTypes.string.isRequired,
   handleClick: PropTypes.func.isRequired,
+  isStaked: PropTypes.bool.isRequired,
 }
 
 export default NFTListItem
