@@ -19,11 +19,21 @@ const Backdrop = styled.div`
 `
 
 const Layout = styled.div`
+  padding: 0 10px;
+
+  ${props => props.theme.bp.sm`
+    margin-top: 100px;
+  `}
+`
+
+const Content = styled.div`
   margin: 200px auto 0;
   background-color: white;
   border-radius: 20px;
   padding: 20px;
   max-width: 600px;
+
+  ${props => props.theme.glowShadows.xs}
 `
 
 const Modal = () => {
@@ -31,7 +41,9 @@ const Modal = () => {
   return (
     <Backdrop onClick={hideModal} visible={visible}>
       <DirectionalFadeIn direction="up" duration={500}>
-        <Layout onClick={e => e.stopPropagation()}>{content}</Layout>
+        <Layout onClick={e => e.stopPropagation()}>
+          <Content>{content}</Content>
+        </Layout>
       </DirectionalFadeIn>
     </Backdrop>
   )

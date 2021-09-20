@@ -43,10 +43,11 @@ const theme = {
   },
 
   glowShadows: {
-    sm: `filter: drop-shadow(0px 1px 8px #EB1662);`,
-    md: `filter: drop-shadow(0px 2px 20px rgba(231, 34, 128, 0.75));`,
-    lg: `filter: drop-shadow(0px 4px 24px rgba(231, 34, 128, 0.75));`,
-    xl: `filter: drop-shadow(0px 8px 40px rgba(231, 34, 128, 0.75));`,
+    xs: `box-shadow: 0px 4px 25px rgba(231, 34, 128, 0.3);`,
+    sm: `box-shadow: 0px 1px 8px #EB1662;`,
+    md: `box-shadow: 0px 2px 20px rgba(231, 34, 128, 0.75);`,
+    lg: `box-shadow: 0px 4px 24px rgba(231, 34, 128, 0.75);`,
+    xl: `box-shadow: 0px 8px 40px rgba(231, 34, 128, 0.75);`,
   },
 }
 

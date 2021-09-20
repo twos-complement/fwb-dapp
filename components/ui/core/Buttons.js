@@ -14,8 +14,8 @@ const BaseTextStyles = css`
   justify-content: center;
 
   > svg {
-    height: 1.6rem;
-    width: 1.6rem;
+    height: 2.4rem;
+    width: 2.4rem;
   }
 `
 
