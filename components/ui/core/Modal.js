@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
 
 import useModal from '../../hooks/useModal'
@@ -28,21 +29,24 @@ const Layout = styled.div`
 
 const Content = styled.div`
   margin: 200px auto 0;
-  background-color: white;
   border-radius: 20px;
-  padding: 20px;
   max-width: 600px;
 
-  ${props => props.theme.glowShadows.xs}
+  ${({ theme, color }) => css`
+    ${theme.glowShadows.xs}
+    background-color: ${
+      color === 'light' ? theme.colors.neutral000 : theme.colors.neutral900
+    };
+  `}
 `
 
 const Modal = () => {
-  const { content, hideModal, visible } = useModal()
+  const { content, hideModal, visible, color } = useModal()
   return (
     <Backdrop onClick={hideModal} visible={visible}>
       <DirectionalFadeIn direction="up" duration={500}>
         <Layout onClick={e => e.stopPropagation()}>
-          <Content>{content}</Content>
+          <Content color={color}>{content}</Content>
         </Layout>
       </DirectionalFadeIn>
     </Backdrop>

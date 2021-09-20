@@ -10,6 +10,8 @@ import ChevronUpIcon from './chevron-up.svg'
 import ChevronDownIcon from './chevron-down.svg'
 import XIcon from './x.svg'
 import ArrowUpRightIcon from './arrow-up-right.svg'
+import FWBTokenIcon from './fwb-token.svg'
+import EthereumTokenIcon from './ethereum-token.svg'
 
 export const FWB = withSvg(FWBIcon, 87, 32)
 export const FWBLong = withSvg(FWBLongIcon, 383, 30)
@@ -21,3 +23,5 @@ export const ChevronUp = withSvg(ChevronUpIcon, 24, 24)
 export const ChevronDown = withSvg(ChevronDownIcon, 24, 24)
 export const Times = withSvg(XIcon, 24, 24)
 export const ArrowUpRight = withSvg(ArrowUpRightIcon, 24, 24)
+export const FWBToken = withSvg(FWBTokenIcon, 64, 64)
+export const EthereumToken = withSvg(EthereumTokenIcon, 64, 64)

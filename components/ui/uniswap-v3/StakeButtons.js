@@ -11,13 +11,13 @@ const StakeButtons = ({
 }) => (
   <Layout>
     <Button onClick={handleStakeClick} isDisabled={!stakeEnabled}>
-      Stake & Unstake LP Tokens
+      Stake & Unstake
     </Button>
     <Button
       onClick={() => claimEnabled && handleClaimClick()}
       isDisabled={!claimEnabled}
     >
-      Claim Accrued Rewards
+      Claim Rewards
     </Button>
   </Layout>
 )

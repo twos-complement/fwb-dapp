@@ -47,7 +47,11 @@ const LPCard = () => {
         />
         <StakeButtons
           handleStakeClick={() => {
-            stakeEnabled && showModal(<StakeModal tokens={tokens} />)
+            stakeEnabled &&
+              showModal({
+                content: <StakeModal tokens={tokens} />,
+                color: 'light',
+              })
           }}
           handleClaimClick={claim}
           stakeEnabled={stakeEnabled}

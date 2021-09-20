@@ -38,7 +38,16 @@ const StakeModal = ({ tokens }) => {
                 minTick={token.tickLower}
                 maxTick={token.tickUpper}
                 handleClick={() =>
-                  showModal(<UnstakedNFTModal id={token.id} />)
+                  showModal({
+                    content: (
+                      <UnstakedNFTModal
+                        id={token.id}
+                        minTick={token.tickLower}
+                        maxTick={token.tickUpper}
+                      />
+                    ),
+                    color: 'dark',
+                  })
                 }
               />
             ))}
@@ -55,7 +64,18 @@ const StakeModal = ({ tokens }) => {
                 id={token.id}
                 minTick={token.tickLower}
                 maxTick={token.tickUpper}
-                handleClick={() => showModal(<StakedNFTModal id={id} />)}
+                handleClick={() =>
+                  showModal({
+                    content: (
+                      <StakedNFTModal
+                        id={token.id}
+                        minTick={token.tickLower}
+                        maxTick={token.tickUpper}
+                      />
+                    ),
+                    color: 'dark',
+                  })
+                }
               >
                 <p>{id}</p>
               </NFTListItem>
@@ -77,6 +97,7 @@ const StakeModal = ({ tokens }) => {
 const Layout = styled.div`
   display: grid;
   grid-row-gap: 24px;
+  padding: 24px;
 `
 
 StakeModal.propTypes = {

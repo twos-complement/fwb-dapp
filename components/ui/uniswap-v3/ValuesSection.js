@@ -11,7 +11,7 @@ const ValueSection = ({
   <Layout>
     <div>
       <H3 color="neutral900">{totalStakedTokens}</H3>
-      <Body1 color="neutral700">Staked Uniswap V3 NFTs</Body1>
+      <Body1 color="neutral700">Staked NFTs</Body1>
     </div>
     <div>
       <H3 color="neutral900">{pendingRewards}</H3>
