@@ -6,6 +6,10 @@ const Layout = styled.div`
   padding: 32px;
   width: 100%;
   ${props => props.theme.glowShadows.lg}
+  ${props => props.theme.bp.sm`
+    grid-template-columns: 1fr;
+    grid-row-gap: 24px;
+  `}
 `
 
 const Card = ({ children }) => <Layout>{children}</Layout>

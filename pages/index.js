@@ -25,7 +25,7 @@ const Home = () => {
           <DirectionalFadeIn direction="up" threshold={0}>
             <Section>
               <Hero>
-                <FWBLong />
+                <DynamicFWBLong />
                 <H1 color="neutral000">Liquidity Mining</H1>
                 <H3Alt color="neutral000">
                   Earn rewards for supplying liquidity for FWB Pro on Uniswap V3
@@ -100,6 +100,10 @@ const Section = styled.div`
   align-items: center;
   justify-content: center;
   padding: 0 24px;
+
+  ${props => props.theme.bp.sm`
+    padding: 0 16px;
+  `}
 `
 
 const Hero = styled.div`
@@ -112,13 +116,19 @@ const Hero = styled.div`
     margin-bottom: 40px;
   }
 
-  ${props => props.theme.bp.md`
-    margin-top: 76px;
-    padding: 24px 24px 0;
-  `}
   ${props => props.theme.bp.sm`
     margin-top: 76px;
     padding: 24px 24px 0;
+    > * {
+      margin-bottom: 16px;
+    }
+  `}
+  ${props => props.theme.bp.md`
+    margin: 120px 0 24px;
+    padding: 24px 24px 0;
+    > * {
+      margin-bottom: 24px;
+    }
   `}
 `
 
@@ -128,7 +138,7 @@ const ContentSection = styled(Section)`
     padding: 48px;
 
     ${bp.sm`
-      padding: 0 24px;
+      padding: 0 16px;
       border-top: 1px solid ${colors.neutral700};
       border-left: none;
     `}
@@ -145,13 +155,24 @@ const Content = styled.div`
   flex-direction: column;
   width: 100%;
 
+  ${props => props.theme.bp.sm`
+    margin-top: 24px;
+    padding: 0 24px 24px;
+  `}
   ${props => props.theme.bp.md`
     margin-top: 40px;
     padding: 24px;
   `}
+`
+
+const DynamicFWBLong = styled(FWBLong)`
+  ${props => props.theme.bp.md`
+    width: 382px;
+    height: 30px;
+  `}
   ${props => props.theme.bp.sm`
-    margin-top: 40px;
-    padding: 24px;
+    width: 203px;
+    height: 16px;
   `}
 `
 
@@ -165,6 +186,7 @@ const PricesWrapper = styled.div`
   ${props => props.theme.bp.sm`
     grid-template-columns: 1fr;
     grid-row-gap: 16px;
+    padding-bottom: 16px;
   `}
 `
 

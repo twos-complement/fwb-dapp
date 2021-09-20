@@ -104,7 +104,7 @@ const GlobalStyles = createGlobalStyle`
     width: 100%;
   }
   ::selection {
-    background: ${props => props.theme.colors.primary050};
+    background: rgba(231, 34, 128, 0.5);
   }
   /* NProgress loader bar plugin: */
   #nprogress {

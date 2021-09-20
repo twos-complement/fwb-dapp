@@ -3,6 +3,20 @@ import styled from 'styled-components'
 
 import ValueCard from '../core/ValueCard'
 
+const CapitalCard = ({ symbol, value, label, multiplier = '' }) => (
+  <ValueCard>
+    <Layout>
+      <Symbol>{symbol}</Symbol>
+      <Details>
+        <Value>
+          {value} <Multiplier>{multiplier}</Multiplier>
+        </Value>
+        <Label>{label}</Label>
+      </Details>
+    </Layout>
+  </ValueCard>
+)
+
 const Layout = styled.div`
   display: grid;
   grid-template-columns: 66px auto;
@@ -45,20 +59,6 @@ const Multiplier = styled.span`
   text-transform: uppercase;
   color: ${props => props.theme.colors.neutral400};
 `
-
-const CapitalCard = ({ symbol, value, label, multiplier = '' }) => (
-  <ValueCard>
-    <Layout>
-      <Symbol>{symbol}</Symbol>
-      <Details>
-        <Value>
-          {value} <Multiplier>{multiplier}</Multiplier>
-        </Value>
-        <Label>{label}</Label>
-      </Details>
-    </Layout>
-  </ValueCard>
-)
 
 CapitalCard.propTypes = {
   symbol: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,

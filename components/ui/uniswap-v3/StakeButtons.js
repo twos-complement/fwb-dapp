@@ -29,7 +29,7 @@ const Layout = styled.div`
 
   ${props => props.theme.bp.sm`
     grid-template-columns: 1fr;
-    grid-row-gap: 24px;
+    grid-row-gap: 16px;
   `}
 `
 
