@@ -1,9 +1,10 @@
 import { FWBMark } from './ui/core/icons'
 import CapitalCard from './ui/uniswap-v3/CapitalCard'
+import useValues from './hooks/useValues'
 
 const TokenPriceCard = () => {
-  // TODO: Fetch token price from coingecko:
-  const value = '$--'
+  const { tokenPrice } = useValues()
+  const value = tokenPrice
 
   return (
     <CapitalCard symbol={<FWBMark />} value={value} label="$FWB Pro Price" />

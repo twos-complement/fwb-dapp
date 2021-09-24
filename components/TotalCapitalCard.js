@@ -1,8 +1,9 @@
 import CapitalCard from './ui/uniswap-v3/CapitalCard'
+import useValues from './hooks/useValues'
 
 const TotalCapitalCard = () => {
-  // TODO: Fetch total capital from Uniswap subgraph:
-  const value = '$--'
+  const { tvl } = useValues()
+  const value = tvl
 
   return (
     <CapitalCard
