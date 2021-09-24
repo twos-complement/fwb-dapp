@@ -10,12 +10,12 @@ const NFTListItem = ({ id, minTick, maxTick, handleClick, isStaked }) => (
     <NFTData id={id} minTick={minTick} maxTick={maxTick} />
     <ButtonLayout>
       <a
-        href={`https://opensea.io/assets/0xc36442b4a4522e871399cd717abdd847ab11fe88/${id}`}
+        href={`https://app.uniswap.org/#/pool/${id}`}
         target="_blank"
         onClick={e => e.stopPropagation()}
       >
         <TextButton>
-          Opensea <ArrowUpRight />
+          View Token <ArrowUpRight />
         </TextButton>
       </a>
       <Button>{isStaked ? 'Unstake' : 'Stake'}</Button>
