@@ -5,7 +5,12 @@ import Web3Modal from 'web3modal'
 
 import UniswapV3PositionsABI from '../../util/abis/uniswap-v3-positions.json'
 import UniswapV3StakerABI from '../../util/abis/uniswap-v3-staker.json'
-import { IncentiveStruct, Incentive } from '../../util/constants'
+import {
+  IncentiveStruct,
+  Incentive,
+  UniswapV3PositionsAddress,
+  UniswapV3StakerAddress,
+} from '../../util/constants'
 
 export const Web3Context = createContext()
 
@@ -49,11 +54,11 @@ export const Web3Provider = ({ children }) => {
     // Initialize contracts:
     const UniswapV3Positions = new web3.eth.Contract(
       UniswapV3PositionsABI,
-      '0xc36442b4a4522e871399cd717abdd847ab11fe88',
+      UniswapV3PositionsAddress,
     )
     const UniswapV3Staker = new web3.eth.Contract(
       UniswapV3StakerABI,
-      '0x1f98407aaB862CdDeF78Ed252D6f557aA5b0f00d',
+      UniswapV3StakerAddress,
     )
     setContracts({
       ...contracts,
@@ -69,20 +74,24 @@ export const Web3Provider = ({ children }) => {
   async function disconnect() {
     await web3Modal.clearCachedProvider()
 
-    console.log({web3Modal, provider})
-
     if (provider?.disconnect && typeof provider.disconnect === 'function') {
-      await provider.disconnect();
+      await provider.disconnect()
     }
 
     setProvider(null)
     setAccounts([])
-
   }
-  
+
   return (
     <Web3Context.Provider
-      value={{ connect, disconnect, accounts, contracts, web3, encodedIncentiveId }}
+      value={{
+        connect,
+        disconnect,
+        accounts,
+        contracts,
+        web3,
+        encodedIncentiveId,
+      }}
     >
       {children}
     </Web3Context.Provider>

@@ -6,16 +6,23 @@ import useModal from './hooks/useModal'
 import useWeb3 from './hooks/useWeb3'
 import { Body1, Overline1 } from './ui/core/Typography'
 import { TextButton, Button } from './ui/core/Buttons'
-import { Incentive } from '../util/constants'
+import { UniswapV3StakerAddress } from '../util/constants'
 import FarmCard from './ui/uniswap-v3/FarmCard'
 
 const UnstakedNFTModal = ({ id, minTick, maxTick }) => {
   const { hideModal } = useModal()
-  const { contracts } = useWeb3()
+  const { contracts, accounts, encodedIncentiveId } = useWeb3()
 
-  async function stake() {
-    await contracts.UniswapV3Staker.methods.stakeToken(Incentive, id).call()
-    hideModal()
+  async function depositAndStake() {
+    await contracts.UniswapV3Positions.methods
+      .safeTransferFrom(
+        accounts[0],
+        UniswapV3StakerAddress,
+        id,
+        encodedIncentiveId,
+      )
+      .send({ from: accounts[0] })
+    console.log('done...')
   }
 
   return (
@@ -35,7 +42,7 @@ const UnstakedNFTModal = ({ id, minTick, maxTick }) => {
           <FarmCard />
         </FarmCardGrid>
         <ButtonsLayout>
-          <Button onClick={stake}>Deposit & Stake</Button>
+          <Button onClick={depositAndStake}>Deposit & Stake</Button>
           <TextButton onClick={hideModal}>Cancel</TextButton>
         </ButtonsLayout>
       </Content>

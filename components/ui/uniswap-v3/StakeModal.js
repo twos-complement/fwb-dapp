@@ -13,7 +13,6 @@ import { H3, H5, Body1, Overline1 } from '../core/Typography'
 const StakeModal = ({ tokens }) => {
   const { hideModal, showModal } = useModal()
 
-  console.log(tokens)
   const stakedTokens = tokens.filter(token => token.isStaked)
   const unstakedTokens = tokens.filter(token => !token.isStaked)
 
