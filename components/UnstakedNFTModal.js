@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
@@ -10,19 +11,22 @@ import { UniswapV3StakerAddress } from '../util/constants'
 import FarmCard from './ui/uniswap-v3/FarmCard'
 
 const UnstakedNFTModal = ({ id, minTick, maxTick }) => {
+  const [loading, setLoading] = useState(false)
   const { hideModal } = useModal()
-  const { contracts, accounts, encodedIncentiveId } = useWeb3()
+  const { contracts, accounts, encodedIncentiveParameter } = useWeb3()
 
   async function depositAndStake() {
+    setLoading(true)
     await contracts.UniswapV3Positions.methods
       .safeTransferFrom(
         accounts[0],
         UniswapV3StakerAddress,
         id,
-        encodedIncentiveId,
+        encodedIncentiveParameter,
       )
       .send({ from: accounts[0] })
-    console.log('done...')
+    setLoding(false)
+    hideModal()
   }
 
   return (
@@ -42,7 +46,9 @@ const UnstakedNFTModal = ({ id, minTick, maxTick }) => {
           <FarmCard />
         </FarmCardGrid>
         <ButtonsLayout>
-          <Button onClick={depositAndStake}>Deposit & Stake</Button>
+          <Button onClick={depositAndStake}>
+            {loading ? 'Pending...' : 'Deposit & Stake'}
+          </Button>
           <TextButton onClick={hideModal}>Cancel</TextButton>
         </ButtonsLayout>
       </Content>

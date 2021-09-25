@@ -18,6 +18,7 @@ const Modal = () => {
 
 const Backdrop = styled.div`
   position: fixed;
+  backdrop-filter: blur(5px);
   top: 0;
   left: 0;
   width: 100%;

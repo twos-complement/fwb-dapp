@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
@@ -10,11 +11,22 @@ import { Incentive } from '../util/constants'
 import { FWBAbbreviatedOutline } from './ui/core/icons'
 
 const StakedNFTModal = ({ id, minTick, maxTick, pendingRewards }) => {
+  const [loading, setLoading] = useState(false)
   const { hideModal } = useModal()
-  const { contracts } = useWeb3()
+  const { contracts, accounts } = useWeb3()
 
-  async function unstake() {
-    await contracts.UniswapV3Staker.methods.unstakeToken(Incentive, id).call()
+  async function unstakeAndWithdraw() {
+    setLoading(true)
+    const unstakeCall = contracts.UniswapV3Staker.methods
+      .unstakeToken(Incentive, id)
+      .encodeABI()
+    const withdrawCall = contracts.UniswapV3Staker.methods
+      .withdrawToken(id, accounts[0], '0x')
+      .encodeABI()
+    await contracts.UniswapV3Staker.methods
+      .multicall([unstakeCall, withdrawCall])
+      .send({ from: accounts[0] })
+    setLoading(false)
     hideModal()
   }
 
@@ -34,7 +46,9 @@ const StakedNFTModal = ({ id, minTick, maxTick, pendingRewards }) => {
           <FWBAbbreviatedOutline />
         </PendingRewards>
         <ButtonsLayout>
-          <SecondaryButton onClick={unstake}>Unstake</SecondaryButton>
+          <SecondaryButton onClick={unstakeAndWithdraw}>
+            {loading ? 'Pending...' : 'Unstake & Withdraw'}
+          </SecondaryButton>
           <TextButton onClick={hideModal}>Cancel</TextButton>
         </ButtonsLayout>
       </Content>

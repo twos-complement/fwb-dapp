@@ -15,14 +15,20 @@ import { RewardToken } from '../util/constants'
 
 const LPCard = () => {
   const { showModal } = useModal()
-  const { contracts, accounts } = useWeb3()
+  const { contracts, accounts, web3 } = useWeb3()
   const { tokens, pendingRewards, totalStakedTokens } = useLPTokens()
   const { accruedRewards } = useAccruedRewards()
 
   async function claim() {
     await contracts.UniswapV3Staker.methods
       .claimReward(RewardToken, accounts[0], accruedRewards)
-      .call()
+      .send({ from: accounts[0] })
+  }
+
+  function formatRewards(rewards) {
+    return web3
+      ? parseFloat(web3.utils.fromWei(rewards.toString())).toFixed(5)
+      : '0'
   }
 
   const stakeEnabled = accounts.length > 0 && tokens && tokens.length > 0
@@ -43,7 +49,7 @@ const LPCard = () => {
         <ValuesSection
           totalStakedTokens={totalStakedTokens}
           pendingRewards={pendingRewards}
-          accruedRewards={accruedRewards}
+          accruedRewards={formatRewards(accruedRewards)}
         />
         <StakeButtons
           handleStakeClick={() => {

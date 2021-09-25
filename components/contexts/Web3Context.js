@@ -29,6 +29,7 @@ export const Web3Provider = ({ children }) => {
   const [contracts, setContracts] = useState({})
   const [web3, setWeb3] = useState()
   const [provider, setProvider] = useState()
+  const [encodedIncentiveParameter, setEncodedIncentiveParameter] = useState()
   const [encodedIncentiveId, setEncodedIncentiveId] = useState()
 
   useEffect(() => {
@@ -68,6 +69,7 @@ export const Web3Provider = ({ children }) => {
 
     // Encode Incentive ID:
     const incentiveId = web3.eth.abi.encodeParameter(IncentiveStruct, Incentive)
+    setEncodedIncentiveParameter(incentiveId)
     setEncodedIncentiveId(web3.utils.keccak256(incentiveId))
   }
 
@@ -90,6 +92,7 @@ export const Web3Provider = ({ children }) => {
         accounts,
         contracts,
         web3,
+        encodedIncentiveParameter,
         encodedIncentiveId,
       }}
     >
