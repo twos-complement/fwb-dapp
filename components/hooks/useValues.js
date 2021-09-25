@@ -5,7 +5,7 @@ function formatMillions(value) {
 }
 
 const useValues = () => {
-  const [tvl, setTvl] = useState('$--.-M')
+  const [tvl, setTvl] = useState('$--.-')
   const [tokenPrice, setTokenPrice] = useState('$--.--')
 
   useEffect(() => {
