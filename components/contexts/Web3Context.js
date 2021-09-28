@@ -71,6 +71,11 @@ export const Web3Provider = ({ children }) => {
     const incentiveId = web3.eth.abi.encodeParameter(IncentiveStruct, Incentive)
     setEncodedIncentiveParameter(incentiveId)
     setEncodedIncentiveId(web3.utils.keccak256(incentiveId))
+
+    // Watch for address changes:
+    provider.on('accountsChanged', accounts => {
+      setAccounts(accounts)
+    })
   }
 
   async function disconnect() {
