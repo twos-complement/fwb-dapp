@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import { format } from 'date-fns'
 
 import { H4Alt, Body2 } from '../core/Typography'
 import { Incentive } from '../../../util/constants'
@@ -14,9 +13,21 @@ const FarmCard = () => (
     <div>
       <H4Alt color="neutral050">Uniswap V3 ETH - FWB</H4Alt>
       <Body2 color="neutral050">
-        {format(new Date(Incentive.startTime * 1000), 'MMM io h:mmaaa')}
+        {Intl.DateTimeFormat('en', {
+          month: 'short',
+          day: 'numeric',
+          year: 'numeric',
+          hour: 'numeric',
+          minute: 'numeric',
+        }).format(new Date(Incentive.startTime * 1000))}
         &nbsp;&mdash;&nbsp;
-        {format(new Date(Incentive.endTime * 1000), 'MMM io h:mmaaa')}
+        {Intl.DateTimeFormat('en', {
+          month: 'short',
+          day: 'numeric',
+          year: 'numeric',
+          hour: 'numeric',
+          minute: 'numeric',
+        }).format(new Date(Incentive.endTime * 1000))}
       </Body2>
     </div>
   </Wrapper>
