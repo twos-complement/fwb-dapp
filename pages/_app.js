@@ -5,6 +5,7 @@ import theme from '../util/theme'
 import GlobalStyles from '../components/ui/core/GlobalStyles'
 import { Web3Provider } from '../components/contexts/Web3Context'
 import { ModalProvider } from '../components/contexts/ModalContext'
+import { SystemMessageProvider } from '../components/contexts/SystemMessageContext'
 import Modal from '../components/ui/core/Modal'
 
 function MyApp({ Component, pageProps }) {
@@ -23,9 +24,11 @@ function MyApp({ Component, pageProps }) {
       <ThemeProvider theme={theme}>
         <Web3Provider>
           <ModalProvider>
-            <GlobalStyles />
-            <Component {...pageProps} />
-            <Modal />
+            <SystemMessageProvider>
+              <GlobalStyles />
+              <Component {...pageProps} />
+              <Modal />
+            </SystemMessageProvider>
           </ModalProvider>
         </Web3Provider>
       </ThemeProvider>
