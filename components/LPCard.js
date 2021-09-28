@@ -8,6 +8,7 @@ import useModal from './hooks/useModal'
 import useLPTokens from './hooks/useLPTokens'
 import useAccruedRewards from './hooks/useAccruedRewards'
 import useWeb3 from './hooks/useWeb3'
+import useSystemMessage from './hooks/useSystemMessage'
 import { H3, H5 } from './ui/core/Typography'
 import { FWBTag } from './ui/core/Tags'
 import { FWBMark } from './ui/core/icons'
@@ -18,11 +19,29 @@ const LPCard = () => {
   const { contracts, accounts, web3 } = useWeb3()
   const { tokens, pendingRewards, totalStakedTokens } = useLPTokens()
   const { accruedRewards } = useAccruedRewards()
+  const { createMessage } = useSystemMessage()
+  const { loadTokens } = useLPTokens()
 
   async function claim() {
-    await contracts.UniswapV3Staker.methods
-      .claimReward(RewardToken, accounts[0], accruedRewards)
-      .send({ from: accounts[0] })
+    try {
+      createMessage({
+        text: `Claiming accrued rewards.`,
+        state: 'info',
+      })
+      await contracts.UniswapV3Staker.methods
+        .claimReward(RewardToken, accounts[0], accruedRewards)
+        .send({ from: accounts[0] })
+      await loadTokens()
+      createMessage({
+        text: `Successfully claimed accrued rewards!`,
+        state: 'success',
+      })
+    } catch (e) {
+      createMessage({
+        text: e.message,
+        state: 'error',
+      })
+    }
   }
 
   function formatRewards(rewards) {

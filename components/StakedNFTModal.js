@@ -34,7 +34,7 @@ const StakedNFTModal = ({ id, minTick, maxTick, pendingRewards }) => {
       await loadTokens()
       setLoading(false)
       createMessage({
-        text: `Successfully staked token ${id}!`,
+        text: `Successfully unstaked and withdrew token ${id}!`,
         state: 'success',
       })
       hideModal()

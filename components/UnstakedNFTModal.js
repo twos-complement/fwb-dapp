@@ -33,7 +33,7 @@ const UnstakedNFTModal = ({ id, minTick, maxTick }) => {
       await loadTokens()
       setLoading(false)
       createMessage({
-        text: `Successfully staked token ${id}!`,
+        text: `Successfully deposited and staked token ${id}!`,
         state: 'success',
       })
       hideModal()

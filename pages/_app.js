@@ -6,6 +6,7 @@ import GlobalStyles from '../components/ui/core/GlobalStyles'
 import { Web3Provider } from '../components/contexts/Web3Context'
 import { ModalProvider } from '../components/contexts/ModalContext'
 import { SystemMessageProvider } from '../components/contexts/SystemMessageContext'
+import { LPTokensProvider } from '../components/contexts/LPTokensContext'
 import Modal from '../components/ui/core/Modal'
 
 function MyApp({ Component, pageProps }) {
@@ -25,9 +26,11 @@ function MyApp({ Component, pageProps }) {
         <Web3Provider>
           <ModalProvider>
             <SystemMessageProvider>
-              <GlobalStyles />
-              <Component {...pageProps} />
-              <Modal />
+              <LPTokensProvider>
+                <GlobalStyles />
+                <Component {...pageProps} />
+                <Modal />
+              </LPTokensProvider>
             </SystemMessageProvider>
           </ModalProvider>
         </Web3Provider>
