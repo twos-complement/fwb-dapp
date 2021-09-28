@@ -127,7 +127,7 @@ const useLPTokens = () => {
     loadTokens()
   }, [contracts, accounts, encodedIncentiveId])
 
-  return { tokens, pendingRewards, totalStakedTokens }
+  return { tokens, pendingRewards, totalStakedTokens, loadTokens }
 }
 
 export default useLPTokens

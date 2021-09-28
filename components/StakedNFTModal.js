@@ -6,6 +6,8 @@ import NFTData from './ui/uniswap-v3/NFTData'
 import { TextButton, SecondaryButton } from './ui/core/Buttons'
 import useWeb3 from './hooks/useWeb3'
 import useModal from './hooks/useModal'
+import useSystemMessage from './hooks/useSystemMessage'
+import useLPTokens from './hooks/useLPTokens'
 import { H3, Overline1, Body1 } from './ui/core/Typography'
 import { Incentive } from '../util/constants'
 import { FWBAbbreviatedOutline } from './ui/core/icons'
@@ -14,20 +16,35 @@ const StakedNFTModal = ({ id, minTick, maxTick, pendingRewards }) => {
   const [loading, setLoading] = useState(false)
   const { hideModal } = useModal()
   const { contracts, accounts } = useWeb3()
+  const { createMessage } = useSystemMessage()
+  const { loadTokens } = useLPTokens()
 
   async function unstakeAndWithdraw() {
-    setLoading(true)
-    const unstakeCall = contracts.UniswapV3Staker.methods
-      .unstakeToken(Incentive, id)
-      .encodeABI()
-    const withdrawCall = contracts.UniswapV3Staker.methods
-      .withdrawToken(id, accounts[0], '0x')
-      .encodeABI()
-    await contracts.UniswapV3Staker.methods
-      .multicall([unstakeCall, withdrawCall])
-      .send({ from: accounts[0] })
-    setLoading(false)
-    hideModal()
+    try {
+      setLoading(true)
+      const unstakeCall = contracts.UniswapV3Staker.methods
+        .unstakeToken(Incentive, id)
+        .encodeABI()
+      const withdrawCall = contracts.UniswapV3Staker.methods
+        .withdrawToken(id, accounts[0], '0x')
+        .encodeABI()
+      await contracts.UniswapV3Staker.methods
+        .multicall([unstakeCall, withdrawCall])
+        .send({ from: accounts[0] })
+      await loadTokens()
+      setLoading(false)
+      createMessage({
+        text: `Successfully staked token ${id}!`,
+        state: 'success',
+      })
+      hideModal()
+    } catch (e) {
+      setLoading(false)
+      createMessage({
+        text: e.message,
+        state: 'error',
+      })
+    }
   }
 
   return (

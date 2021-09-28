@@ -31,7 +31,7 @@ export const SystemMessageProvider = ({ children }) => {
     // Wait for animation, then remove:
     setTimeout(() => {
       setMessages(messages.filter(({ id }) => id != message.id))
-    }, 1000)
+    }, 300)
   }
 
   return (

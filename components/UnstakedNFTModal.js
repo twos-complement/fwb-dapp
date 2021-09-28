@@ -5,6 +5,8 @@ import PropTypes from 'prop-types'
 import NFTData from './ui/uniswap-v3/NFTData'
 import useModal from './hooks/useModal'
 import useWeb3 from './hooks/useWeb3'
+import useSystemMessage from './hooks/useSystemMessage'
+import useLPTokens from './hooks/useLPTokens'
 import { Body1, Overline1 } from './ui/core/Typography'
 import { TextButton, Button } from './ui/core/Buttons'
 import { UniswapV3StakerAddress } from '../util/constants'
@@ -14,19 +16,34 @@ const UnstakedNFTModal = ({ id, minTick, maxTick }) => {
   const [loading, setLoading] = useState(false)
   const { hideModal } = useModal()
   const { contracts, accounts, encodedIncentiveParameter } = useWeb3()
+  const { createMessage } = useSystemMessage()
+  const { loadTokens } = useLPTokens()
 
   async function depositAndStake() {
     setLoading(true)
-    await contracts.UniswapV3Positions.methods
-      .safeTransferFrom(
-        accounts[0],
-        UniswapV3StakerAddress,
-        id,
-        encodedIncentiveParameter,
-      )
-      .send({ from: accounts[0] })
-    setLoding(false)
-    hideModal()
+    try {
+      await contracts.UniswapV3Positions.methods
+        .safeTransferFrom(
+          accounts[0],
+          UniswapV3StakerAddress,
+          id,
+          encodedIncentiveParameter,
+        )
+        .send({ from: accounts[0] })
+      await loadTokens()
+      setLoading(false)
+      createMessage({
+        text: `Successfully staked token ${id}!`,
+        state: 'success',
+      })
+      hideModal()
+    } catch (e) {
+      setLoading(false)
+      createMessage({
+        text: e.message,
+        state: 'error',
+      })
+    }
   }
 
   return (

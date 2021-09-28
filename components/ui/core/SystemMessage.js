@@ -57,7 +57,7 @@ const Layout = styled.div`
 
     ${props.animateOut &&
     css`
-      animation: ${fadeRight} 1000ms forwards;
+      animation: ${fadeRight} 300ms forwards;
     `}
   `}
 `
