@@ -34,7 +34,7 @@ export const Web3Provider = ({ children }) => {
 
   useEffect(() => {
     const web3Modal = new Web3Modal({
-      cacheProvider: false,
+      cacheProvider: true,
       providerOptions,
     })
     setWeb3Modal(web3Modal)
