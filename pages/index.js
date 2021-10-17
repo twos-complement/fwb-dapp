@@ -8,6 +8,7 @@ import DirectionalFadeIn from '../components/ui/core/DirectionalFadeIn'
 import { H1, H3Alt } from '../components/ui/core/Typography'
 import ConnectButton from '../components/ui/core/ConnectButton'
 import { FWB, FWBLong } from '../components/ui/core/icons'
+import IndieDAOBadge from '../components/ui/core/IndieDAOBadge'
 
 const Home = () => {
   return (
@@ -30,6 +31,9 @@ const Home = () => {
                 <H3Alt color="neutral000">
                   Earn rewards for supplying liquidity for FWB Pro on Uniswap V3
                 </H3Alt>
+                <DesktopIndieBadgeWrapper>
+                  <IndieDAOBadge />
+                </DesktopIndieBadgeWrapper>
               </Hero>
             </Section>
           </DirectionalFadeIn>
@@ -42,6 +46,9 @@ const Home = () => {
                 </PricesWrapper>
                 <LPCard />
               </Content>
+              <MobileIndieBadgeWrapper>
+                <IndieDAOBadge />
+              </MobileIndieBadgeWrapper>
             </ContentSection>
           </DirectionalFadeIn>
         </Layout>
@@ -59,13 +66,13 @@ const Layout = styled.div`
 
     ${bp.sm`
       grid-template-columns: 1fr;
-      padding: 0;
+      padding: 0 0 40px;
       height: auto;
       grid-row-gap: 0;
     `}
     ${bp.md`
       grid-template-columns: 1fr;
-      padding: 0;
+      padding: 0 0 40px;
       height: auto;
       grid-row-gap: 0;
     `}
@@ -138,12 +145,12 @@ const ContentSection = styled(Section)`
     padding: 48px;
 
     ${bp.sm`
-      padding: 0 16px;
+      padding: 0 16px 80px;
       border-top: 1px solid ${colors.neutral700};
       border-left: none;
     `}
     ${bp.md`
-      padding: 0 24px;
+      padding: 0 24px 80px;
       border-top: 1px solid ${colors.neutral700};
       border-left: none;
     `}
@@ -187,6 +194,30 @@ const PricesWrapper = styled.div`
     grid-template-columns: 1fr;
     grid-row-gap: 16px;
     padding-bottom: 16px;
+  `}
+`
+
+const DesktopIndieBadgeWrapper = styled.div`
+  position: absolute;
+  bottom: 0;
+  left: 40px;
+  ${props => props.theme.bp.sm`
+    display: none;
+  `}
+  ${props => props.theme.bp.md`
+    display: none;
+  `}
+`
+
+const MobileIndieBadgeWrapper = styled.div`
+  position: absolute;
+  bottom: 0;
+  left: 40px;
+  ${props => props.theme.bp.lg`
+    display: none;
+  `}
+  ${props => props.theme.bp.xl`
+    display: none;
   `}
 `
 
